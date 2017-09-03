@@ -13,21 +13,23 @@ var GameMain = (function () {
         //设置横竖屏
         Laya.stage.screenMode = "horizontal";
         Laya.loader.load([
-            { url: "res/ui/GameTest.fui", type: Loader.BUFFER },
+            { url: "res/ui/Login.fui", type: Loader.BUFFER },
             { url: "res/ui/Task.fui", type: Loader.BUFFER }
         ], Handler.create(this, this.onLoaded));
     }
     GameMain.prototype.onLoaded = function () {
         Laya.stage.addChild(fairygui.GRoot.inst.displayObject);
         this.addPackage();
-        SingleWnd.GetInst().wndTest.show();
+        SingleWnd.GetInst().wndLogin.show();
         SingleWnd.GetInst().wndGuide.show();
     };
+    ;
     //统一添加UI包
     GameMain.prototype.addPackage = function () {
-        UIPackage.addPackage("res/ui/GameTest");
+        UIPackage.addPackage("res/ui/Login");
         UIPackage.addPackage("res/ui/Task");
     };
+    ;
     return GameMain;
 }());
 new GameMain();

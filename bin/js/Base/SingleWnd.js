@@ -1,9 +1,11 @@
 //单例窗口类
 var SingleWnd = (function () {
     function SingleWnd() {
-        this._wndtest = null;
+        //登陆界面
+        this._wndLogin = null;
         //任务引导主界面
         this._wndGuide = null;
+        this.temp = "2";
     }
     SingleWnd.GetInst = function () {
         if (this._inst == null) {
@@ -11,13 +13,13 @@ var SingleWnd = (function () {
         }
         return this._inst;
     };
-    Object.defineProperty(SingleWnd.prototype, "wndtest", {
+    Object.defineProperty(SingleWnd.prototype, "wndLogin", {
         get: function () {
-            if (this._wndtest == null) {
-                this._wndtest = new Wndtest();
-                this._wndtest.animation = ["fade_in", "shrink"];
+            if (this._wndLogin == null) {
+                this._wndLogin = new WndLogin();
+                this._wndLogin.animation = ["fade_in", "shrink"];
             }
-            return this._wndtest;
+            return this._wndLogin;
         },
         enumerable: true,
         configurable: true

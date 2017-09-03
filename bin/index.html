@@ -22,13 +22,10 @@
 	<script type="text/javascript" src="libs/laya.core.js"></script>
 	<!--封装了webgl渲染管线，如果使用webgl渲染，可以在初始化时调用Laya.init(1000,800,laya.webgl.WebGL);-->
     <script type="text/javascript" src="libs/laya.webgl.js"></script>
-	<!--是动画模块，包含了swf动画，骨骼动画等-->
-    <script type="text/javascript" src="libs/laya.ani.js"></script>
 	<!--包含更多webgl滤镜，比如外发光，阴影，模糊以及更多-->
     <script type="text/javascript" src="libs/laya.filter.js"></script>
 	<!--封装了html动态排版功能-->
     <script type="text/javascript" src="libs/laya.html.js"></script>
-	<!-- 物理引擎matter.js -->
 	<!--用户自定义顺序文件添加到这里-->
 	<!--jsfile--Custom-->
 	<script type="text/javascript" src="libs/rawinflate/rawinflate.min.js"></script>
@@ -37,10 +34,11 @@
 	<!--自定义的js(src文件夹下)文件自动添加到下面jsfile模块标签里面里-->
 	<!--删除标签，ide不会自动添加js文件，请谨慎操作-->
 	<!--jsfile--startTag-->
+	<script src="js/Configs/TaskConfigs.js"></script>
 	<script src="js/Base/SingleWnd.js"></script>
 	<script src="js/Base/WindowBase.js"></script>
 	<script src="js/UI/Guide/WndGuide.js"></script>
-	<script src="js/UI/WndTest.js"></script>
+	<script src="js/UI/Login/WndLogin.js"></script>
 	<!--jsfile--endTag-->
 
 	<!--启动类添加到这里-->

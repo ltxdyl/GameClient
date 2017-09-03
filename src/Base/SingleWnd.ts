@@ -9,15 +9,16 @@ class SingleWnd{
         return this._inst;
     }
     
-    private _wndtest:Wndtest = null;
-    get wndtest():Wndtest
+    //登陆界面
+    private _wndLogin:WndLogin = null;
+    get wndLogin():WndLogin
     {
-        if(this._wndtest == null)
+        if(this._wndLogin == null)
         {
-            this._wndtest = new Wndtest();
-            this._wndtest.animation = ["fade_in","shrink"];
+            this._wndLogin = new WndLogin();
+            this._wndLogin.animation = ["fade_in","shrink"];
         }
-        return this._wndtest;
+        return this._wndLogin;
     }
 
     //任务引导主界面
@@ -31,4 +32,5 @@ class SingleWnd{
         return this._wndGuide;
     }
 
+    private temp = "2";
 }
