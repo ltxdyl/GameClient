@@ -5,7 +5,10 @@ var SingleWnd = (function () {
         this._wndLogin = null;
         //任务引导主界面
         this._wndGuide = null;
-        this.temp = "2";
+        //战斗界面
+        this._wndBattle = null;
+        //HUD界面
+        this._wndHUD = null;
     }
     SingleWnd.GetInst = function () {
         if (this._inst == null) {
@@ -30,6 +33,26 @@ var SingleWnd = (function () {
                 this._wndGuide = new WndGuide();
             }
             return this._wndGuide;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(SingleWnd.prototype, "wndBattle", {
+        get: function () {
+            if (this._wndBattle == null) {
+                this._wndBattle == new WndBattle();
+            }
+            return this._wndBattle;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(SingleWnd.prototype, "wndHUD", {
+        get: function () {
+            if (this._wndHUD == null) {
+                this._wndHUD = new WndHUD();
+            }
+            return this._wndHUD;
         },
         enumerable: true,
         configurable: true

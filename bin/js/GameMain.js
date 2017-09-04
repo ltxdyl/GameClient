@@ -15,15 +15,16 @@ var GameMain = (function () {
         Laya.loader.load([
             { url: "res/ui/Public.fui", type: Loader.BUFFER },
             { url: "res/ui/Login.fui", type: Loader.BUFFER },
+            { url: "res/ui/Battle@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/Battle.fui", type: Loader.BUFFER },
-            { url: "res/ui/Task.fui", type: Loader.BUFFER }
+            { url: "res/ui/Task.fui", type: Loader.BUFFER },
+            { url: "res/ui/HUD.fui", type: Loader.BUFFER }
         ], Handler.create(this, this.onLoaded));
     }
     GameMain.prototype.onLoaded = function () {
         Laya.stage.addChild(fairygui.GRoot.inst.displayObject);
         this.addPackage();
         SingleWnd.GetInst().wndLogin.show();
-        SingleWnd.GetInst().wndGuide.show();
     };
     ;
     //统一添加UI包
@@ -32,6 +33,7 @@ var GameMain = (function () {
         UIPackage.addPackage("res/ui/Task");
         UIPackage.addPackage("res/ui/Login");
         UIPackage.addPackage("res/ui/Battle");
+        UIPackage.addPackage("res/ui/HUD");
     };
     ;
     return GameMain;

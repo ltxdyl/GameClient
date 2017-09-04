@@ -32,5 +32,25 @@ class SingleWnd{
         return this._wndGuide;
     }
 
-    private temp = "2";
+    //战斗界面
+    private _wndBattle:WndBattle = null;
+    get wndBattle():WndBattle
+    {
+        if(this._wndBattle == null)
+        {
+            this._wndBattle == new WndBattle();
+        }
+        return this._wndBattle;
+    }
+
+    //HUD界面
+    private _wndHUD:WndHUD = null;
+    get wndHUD():WndHUD
+    {
+        if(this._wndHUD == null)
+        {
+            this._wndHUD = new WndHUD();
+        }
+        return this._wndHUD;
+    }
 }

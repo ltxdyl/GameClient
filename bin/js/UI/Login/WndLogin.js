@@ -12,8 +12,17 @@ var WndLogin = (function (_super) {
     WndLogin.prototype.onInit = function () {
         this.contentPane = fairygui.UIPackage.createObject("Login", "WndLogin").asCom;
         this.infos = this.contentPane.getChild("infos").asTextField;
+        this.btnLogin = this.contentPane.getChild("btnLogin").asButton;
+        this.eventBind();
+    };
+    WndLogin.prototype.eventBind = function () {
+        this.btnLogin.onClick(this, this.btnLoginOnClick);
     };
     WndLogin.prototype.OnShown = function () {
+    };
+    WndLogin.prototype.btnLoginOnClick = function () {
+        SingleWnd.GetInst().wndBattle.show();
+        this.hide();
     };
     return WndLogin;
 }(WindowBase));
