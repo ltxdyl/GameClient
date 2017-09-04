@@ -12,7 +12,7 @@ class WndGuide extends WindowBase{
     }
 
     protected onInit():void{
-        this.contentPane = fairygui.UIPackage.createObject("任务","引导界面").asCom
+        this.contentPane = fairygui.UIPackage.createObject("Task","WndGuide").asCom
         this.TopMask = this.contentPane.getChild("TopMask").asImage;
         this.BottomMask = this.contentPane.getChild("BottomMask").asImage;
         this.LeftMask = this.contentPane.getChild("LeftMask").asImage;

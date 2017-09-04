@@ -8,7 +8,7 @@ class WndLogin extends WindowBase
     }
     
     protected onInit():void {
-        this.contentPane = fairygui.UIPackage.createObject("登陆","登陆界面").asCom;
+        this.contentPane = fairygui.UIPackage.createObject("Login","WndLogin").asCom;
         this.infos = this.contentPane.getChild("infos").asTextField;
     }
 

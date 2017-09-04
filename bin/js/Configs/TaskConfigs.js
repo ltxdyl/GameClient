@@ -1,3 +1,4 @@
+//任务引导配置问题
 var TaskConfigs = {
     "1": {
         "id": 1,
