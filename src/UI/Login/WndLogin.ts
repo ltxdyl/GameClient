@@ -1,7 +1,6 @@
 //测试界面
 class WndLogin extends WindowBase
 {
-    private infos:fairygui.GTextField;
     private btnLogin:fairygui.GButton;
 
     public constructor() {
@@ -10,22 +9,21 @@ class WndLogin extends WindowBase
     
     protected onInit():void {
         this.contentPane = fairygui.UIPackage.createObject("Login","WndLogin").asCom;
-        this.infos = this.contentPane.getChild("infos").asTextField;
         this.btnLogin = this.contentPane.getChild("btnLogin").asButton;
 
-        this.eventBind();
+        this.EventBind();
     }
 
-    protected eventBind():void{
-        this.btnLogin.onClick(this,this.btnLoginOnClick)
+    protected EventBind():void{
+        this.btnLogin.onClick(this,this.OnBtnLoginOnClick)
     }
 
     protected OnShown(): void {
 
     }
 
-    protected btnLoginOnClick():void{
-        SingleWnd.GetInst().wndBattle.show();
+    protected OnBtnLoginOnClick():void{
+        SingleWnd.GetInst().wndHUD.show();
         this.hide();
     }
 }

@@ -11,11 +11,47 @@ var WndHUD = (function (_super) {
     }
     WndHUD.prototype.onInit = function () {
         this.contentPane = fairygui.UIPackage.createObject("HUD", "WndHUD").asCom;
-        this.eventBind();
+        this.tShowButton = this.contentPane.getTransition("tShowButton");
+        this.btnCity = this.contentPane.getChild("btnCity").asButton;
+        this.btnBag = this.contentPane.getChild("btnBag").asButton;
+        this.btnBattle = this.contentPane.getChild("btnBattle").asButton;
+        this.btnRole = this.contentPane.getChild("btnRole").asButton;
+        this.btnPet = this.contentPane.getChild("btnPet").asButton;
+        this.EventBind();
     };
-    WndHUD.prototype.eventBind = function () {
+    WndHUD.prototype.EventBind = function () {
+        this.btnCity.onClick(this, this.OnBtnCityClick);
+        this.btnBag.onClick(this, this.OnBtnBagClick);
+        this.btnBattle.onClick(this, this.OnBtnBattleClick);
+        this.btnRole.onClick(this, this.OnBtnRoleClick);
+        this.btnPet.onClick(this, this.OnBtnPetClick);
     };
     WndHUD.prototype.OnShown = function () {
+        this.ShowMenuAndTaskButton();
+    };
+    //主城
+    WndHUD.prototype.OnBtnCityClick = function () {
+        this.ShowMenuAndTaskButton();
+    };
+    //背包
+    WndHUD.prototype.OnBtnBagClick = function () {
+        this.ShowMenuAndTaskButton();
+    };
+    //战斗
+    WndHUD.prototype.OnBtnBattleClick = function () {
+        this.ShowMenuAndTaskButton();
+    };
+    //角色
+    WndHUD.prototype.OnBtnRoleClick = function () {
+        this.ShowMenuAndTaskButton();
+    };
+    //宠物
+    WndHUD.prototype.OnBtnPetClick = function () {
+        this.ShowMenuAndTaskButton();
+    };
+    //显示菜单和任务按钮
+    WndHUD.prototype.ShowMenuAndTaskButton = function () {
+        this.tShowButton.play();
     };
     return WndHUD;
 }(WindowBase));

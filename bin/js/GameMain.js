@@ -14,10 +14,12 @@ var GameMain = (function () {
         Laya.stage.screenMode = "vertical";
         Laya.loader.load([
             { url: "res/ui/Public.fui", type: Loader.BUFFER },
+            { url: "res/ui/Login@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/Login.fui", type: Loader.BUFFER },
             { url: "res/ui/Battle@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/Battle.fui", type: Loader.BUFFER },
             { url: "res/ui/Task.fui", type: Loader.BUFFER },
+            { url: "res/ui/HUD@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/HUD.fui", type: Loader.BUFFER }
         ], Handler.create(this, this.onLoaded));
     }

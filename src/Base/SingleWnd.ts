@@ -32,17 +32,6 @@ class SingleWnd{
         return this._wndGuide;
     }
 
-    //战斗界面
-    private _wndBattle:WndBattle = null;
-    get wndBattle():WndBattle
-    {
-        if(this._wndBattle == null)
-        {
-            this._wndBattle == new WndBattle();
-        }
-        return this._wndBattle;
-    }
-
     //HUD界面
     private _wndHUD:WndHUD = null;
     get wndHUD():WndHUD
@@ -52,5 +41,16 @@ class SingleWnd{
             this._wndHUD = new WndHUD();
         }
         return this._wndHUD;
+    }
+
+    //战斗界面
+    private _wndBattle:WndBattle = null;
+    get wndBattle():WndBattle
+    {
+        if(this._wndBattle == null)
+        {
+            this._wndBattle = new WndBattle();
+        }
+        return this._wndBattle;
     }
 }

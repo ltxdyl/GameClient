@@ -5,10 +5,10 @@ var SingleWnd = (function () {
         this._wndLogin = null;
         //任务引导主界面
         this._wndGuide = null;
-        //战斗界面
-        this._wndBattle = null;
         //HUD界面
         this._wndHUD = null;
+        //战斗界面
+        this._wndBattle = null;
     }
     SingleWnd.GetInst = function () {
         if (this._inst == null) {
@@ -37,22 +37,22 @@ var SingleWnd = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(SingleWnd.prototype, "wndBattle", {
-        get: function () {
-            if (this._wndBattle == null) {
-                this._wndBattle == new WndBattle();
-            }
-            return this._wndBattle;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(SingleWnd.prototype, "wndHUD", {
         get: function () {
             if (this._wndHUD == null) {
                 this._wndHUD = new WndHUD();
             }
             return this._wndHUD;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(SingleWnd.prototype, "wndBattle", {
+        get: function () {
+            if (this._wndBattle == null) {
+                this._wndBattle = new WndBattle();
+            }
+            return this._wndBattle;
         },
         enumerable: true,
         configurable: true
