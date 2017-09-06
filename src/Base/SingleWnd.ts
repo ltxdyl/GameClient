@@ -53,4 +53,16 @@ class SingleWnd{
         }
         return this._wndBattle;
     }
+
+    //菜单界面
+    private _wndMenu:WndMenu = null;
+    get wndMenu():WndMenu
+    {
+        if(this._wndMenu == null)
+        {
+            this._wndMenu = new WndMenu();
+            this._wndMenu.animation = ["eject","shrink"];
+        }
+        return this._wndMenu;
+    }
 }

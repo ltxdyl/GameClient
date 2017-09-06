@@ -15,6 +15,7 @@ class GameMain {
         //设置横竖屏
         Laya.stage.screenMode = "vertical";
         Laya.loader.load([
+            { url: "res/ui/Public@atlas0.png", type: Loader.IMAGE},
             { url: "res/ui/Public.fui", type: Loader.BUFFER },
             { url: "res/ui/Login@atlas0.png", type: Loader.IMAGE},
             { url: "res/ui/Login.fui", type: Loader.BUFFER },
@@ -22,13 +23,15 @@ class GameMain {
             { url: "res/ui/Battle.fui", type: Loader.BUFFER },
             { url: "res/ui/Task.fui", type: Loader.BUFFER },
             { url: "res/ui/HUD@atlas0.png", type: Loader.IMAGE},
-            { url: "res/ui/HUD.fui", type: Loader.BUFFER }
+            { url: "res/ui/HUD.fui", type: Loader.BUFFER },
+            { url: "res/ui/Menu.fui", type: Loader.BUFFER },
         ], Handler.create(this, this.onLoaded));
     }
 
     onLoaded():void {
         Laya.stage.addChild(fairygui.GRoot.inst.displayObject);
         this.addPackage();
+        this.bindAll();
         SingleWnd.GetInst().wndLogin.show();
     };
 
@@ -39,7 +42,13 @@ class GameMain {
         UIPackage.addPackage("res/ui/Login");
         UIPackage.addPackage("res/ui/Battle");
         UIPackage.addPackage("res/ui/HUD");
+        UIPackage.addPackage("res/ui/Menu");
     };
+
+    //统一绑定扩展组件
+    bindAll():void{
+        fairygui.UIObjectFactory.setPackageItemExtension("ui://Public/ModalWindowBg",ModalWindowBg);
+    }
 
 }
 

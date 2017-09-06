@@ -2,6 +2,8 @@
 class WndHUD extends WindowBase
 {
     private tShowButton:fairygui.Transition;
+    private btnMenu:fairygui.GButton;
+    private btnTask:fairygui.GButton;
     private btnCity:fairygui.GButton;
     private btnBag:fairygui.GButton;
     private btnBattle:fairygui.GButton;
@@ -16,6 +18,8 @@ class WndHUD extends WindowBase
         this.contentPane = fairygui.UIPackage.createObject("HUD","WndHUD").asCom;
 
         this.tShowButton = this.contentPane.getTransition("tShowButton")
+        this.btnMenu = this.contentPane.getChild("btnMenu").asButton;
+        this.btnTask = this.contentPane.getChild("btnTask").asButton;
         this.btnCity = this.contentPane.getChild("btnCity").asButton;
         this.btnBag = this.contentPane.getChild("btnBag").asButton;
         this.btnBattle = this.contentPane.getChild("btnBattle").asButton;
@@ -25,6 +29,8 @@ class WndHUD extends WindowBase
     }
 
     protected EventBind():void{
+        this.btnMenu.onClick(this,this.OnBtnMenuClick);
+        this.btnTask.onClick(this,this.OnBtnTaskClick);
         this.btnCity.onClick(this,this.OnBtnCityClick);
         this.btnBag.onClick(this,this.OnBtnBagClick);
         this.btnBattle.onClick(this,this.OnBtnBattleClick);
@@ -34,6 +40,18 @@ class WndHUD extends WindowBase
 
     protected OnShown(): void {
         this.ShowMenuAndTaskButton();
+    }
+
+    //菜单
+    protected OnBtnMenuClick():void
+    {
+        SingleWnd.GetInst().wndMenu.show();
+    }
+
+    //任务
+    protected OnBtnTaskClick():void
+    {
+
     }
 
     //主城

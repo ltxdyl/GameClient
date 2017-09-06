@@ -12,6 +12,8 @@ var WndHUD = (function (_super) {
     WndHUD.prototype.onInit = function () {
         this.contentPane = fairygui.UIPackage.createObject("HUD", "WndHUD").asCom;
         this.tShowButton = this.contentPane.getTransition("tShowButton");
+        this.btnMenu = this.contentPane.getChild("btnMenu").asButton;
+        this.btnTask = this.contentPane.getChild("btnTask").asButton;
         this.btnCity = this.contentPane.getChild("btnCity").asButton;
         this.btnBag = this.contentPane.getChild("btnBag").asButton;
         this.btnBattle = this.contentPane.getChild("btnBattle").asButton;
@@ -20,6 +22,8 @@ var WndHUD = (function (_super) {
         this.EventBind();
     };
     WndHUD.prototype.EventBind = function () {
+        this.btnMenu.onClick(this, this.OnBtnMenuClick);
+        this.btnTask.onClick(this, this.OnBtnTaskClick);
         this.btnCity.onClick(this, this.OnBtnCityClick);
         this.btnBag.onClick(this, this.OnBtnBagClick);
         this.btnBattle.onClick(this, this.OnBtnBattleClick);
@@ -28,6 +32,13 @@ var WndHUD = (function (_super) {
     };
     WndHUD.prototype.OnShown = function () {
         this.ShowMenuAndTaskButton();
+    };
+    //菜单
+    WndHUD.prototype.OnBtnMenuClick = function () {
+        SingleWnd.GetInst().wndMenu.show();
+    };
+    //任务
+    WndHUD.prototype.OnBtnTaskClick = function () {
     };
     //主城
     WndHUD.prototype.OnBtnCityClick = function () {

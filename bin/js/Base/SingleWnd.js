@@ -9,6 +9,8 @@ var SingleWnd = (function () {
         this._wndHUD = null;
         //战斗界面
         this._wndBattle = null;
+        //菜单界面
+        this._wndMenu = null;
     }
     SingleWnd.GetInst = function () {
         if (this._inst == null) {
@@ -53,6 +55,17 @@ var SingleWnd = (function () {
                 this._wndBattle = new WndBattle();
             }
             return this._wndBattle;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(SingleWnd.prototype, "wndMenu", {
+        get: function () {
+            if (this._wndMenu == null) {
+                this._wndMenu = new WndMenu();
+                this._wndMenu.animation = ["eject", "shrink"];
+            }
+            return this._wndMenu;
         },
         enumerable: true,
         configurable: true
