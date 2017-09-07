@@ -1,0 +1,1 @@
+{"version":3,"file":"ComBag.js","sourceRoot":"","sources":["../../../../src/UI/Bag/ComBag.ts"],"names":[],"mappings":";;;;;AAAA,QAAQ;AACR;IAAqB,0BAAmB;IAEvC;eACC,iBAAO;IACR,CAAC;IAES,iCAAgB,GAA1B,UAA2B,GAAQ;QAClC,iBAAM,gBAAgB,YAAC,GAAG,CAAC,CAAC;QACtB,IAAI,CAAC,QAAQ,EAAE,CAAC;IACvB,CAAC;IAEY,yBAAQ,GAAlB;IAEA,CAAC;IAEL,aAAC;AAAD,CAAC,AAfD,CAAqB,QAAQ,CAAC,UAAU,GAevC"}

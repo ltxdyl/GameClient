@@ -19,6 +19,7 @@ var WndHUD = (function (_super) {
         this.btnBattle = this.contentPane.getChild("btnBattle").asButton;
         this.btnRole = this.contentPane.getChild("btnRole").asButton;
         this.btnPet = this.contentPane.getChild("btnPet").asButton;
+        this.comCity = this.contentPane.getChild("comCity");
         this.EventBind();
     };
     WndHUD.prototype.EventBind = function () {
@@ -43,6 +44,7 @@ var WndHUD = (function (_super) {
     //主城
     WndHUD.prototype.OnBtnCityClick = function () {
         this.ShowMenuAndTaskButton();
+        this.comCity.tShowGirl.play();
     };
     //背包
     WndHUD.prototype.OnBtnBagClick = function () {

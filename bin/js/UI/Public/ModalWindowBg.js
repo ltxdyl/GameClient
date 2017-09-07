@@ -12,7 +12,6 @@ var ModalWindowBg = (function (_super) {
     }
     ModalWindowBg.prototype.constructFromXML = function (xml) {
         _super.prototype.constructFromXML.call(this, xml);
-        this.background = this.getChild("background").asImage;
         this.btnClose = this.getChild("btnClose").asButton;
         this.EvenBind();
     };

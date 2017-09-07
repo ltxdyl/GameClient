@@ -2,7 +2,6 @@
 //父类为windowbase对象
 class ModalWindowBg extends fairygui.GComponent{
 
-    public background:fairygui.GImage;
 	public btnClose:fairygui.GButton;
 
 	public constructor() {
@@ -11,7 +10,6 @@ class ModalWindowBg extends fairygui.GComponent{
 
 	protected constructFromXML(xml: any): void {
 		super.constructFromXML(xml);
-		this.background = this.getChild("background").asImage;
 		this.btnClose = this.getChild("btnClose").asButton;
         this.EvenBind();
 	}

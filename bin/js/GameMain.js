@@ -19,6 +19,10 @@ var GameMain = (function () {
             { url: "res/ui/Login.fui", type: Loader.BUFFER },
             { url: "res/ui/Battle@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/Battle.fui", type: Loader.BUFFER },
+            { url: "res/ui/Bag@atlas0.png", type: Loader.IMAGE },
+            { url: "res/ui/Bag.fui", type: Loader.BUFFER },
+            { url: "res/ui/City@atlas0.png", type: Loader.IMAGE },
+            { url: "res/ui/City.fui", type: Loader.BUFFER },
             { url: "res/ui/Task.fui", type: Loader.BUFFER },
             { url: "res/ui/HUD@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/HUD.fui", type: Loader.BUFFER },
@@ -40,11 +44,15 @@ var GameMain = (function () {
         UIPackage.addPackage("res/ui/Battle");
         UIPackage.addPackage("res/ui/HUD");
         UIPackage.addPackage("res/ui/Menu");
+        UIPackage.addPackage("res/ui/City");
+        UIPackage.addPackage("res/ui/Bag");
     };
     ;
     //统一绑定扩展组件
     GameMain.prototype.bindAll = function () {
         fairygui.UIObjectFactory.setPackageItemExtension("ui://Public/ModalWindowBg", ModalWindowBg);
+        fairygui.UIObjectFactory.setPackageItemExtension("ui://City/ComCity", ComCity);
+        fairygui.UIObjectFactory.setPackageItemExtension("ui://Bag/ComBag", ComBag);
     };
     return GameMain;
 }());
