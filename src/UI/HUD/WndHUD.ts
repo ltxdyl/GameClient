@@ -11,6 +11,17 @@ class WndHUD extends WindowBase
     private btnPet:fairygui.GButton;
 
     private comCity:ComCity;//主城组件
+    private comBattle:ComBattle;//战斗组件
+
+    private static _wndHUD:WndHUD = null;
+    public static GetInst():WndHUD
+    {
+        if(this._wndHUD == null)
+        {
+            this._wndHUD = new WndHUD();
+        }
+        return this._wndHUD;
+    }
 
     public constructor() {
         super();
@@ -29,6 +40,7 @@ class WndHUD extends WindowBase
         this.btnPet = this.contentPane.getChild("btnPet").asButton;
 
         this.comCity = <ComCity>this.contentPane.getChild("comCity");
+        this.comBattle = <ComBattle>this.contentPane.getChild("comBattle");
         this.EventBind();
     }
 
@@ -43,13 +55,14 @@ class WndHUD extends WindowBase
     }
 
     protected OnShown(): void {
+        this.OnBtnCityClick();
         this.ShowMenuAndTaskButton();
     }
 
     //菜单
     protected OnBtnMenuClick():void
     {
-        SingleWnd.GetInst().wndMenu.show();
+        WndMenu.GetInst().show();
     }
 
     //任务
@@ -62,7 +75,7 @@ class WndHUD extends WindowBase
     protected OnBtnCityClick():void
     {
         this.ShowMenuAndTaskButton();
-        this.comCity.tShowGirl.play();
+        this.comCity.OnShow();
     }
 
     //背包
@@ -75,6 +88,7 @@ class WndHUD extends WindowBase
     protected OnBtnBattleClick():void
     {
         this.ShowMenuAndTaskButton();
+        this.comBattle.OnShow();
     }
 
     //角色

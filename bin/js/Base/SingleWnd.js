@@ -7,8 +7,6 @@ var SingleWnd = (function () {
         this._wndGuide = null;
         //HUD界面
         this._wndHUD = null;
-        //战斗界面
-        this._wndBattle = null;
         //菜单界面
         this._wndMenu = null;
     }
@@ -45,16 +43,6 @@ var SingleWnd = (function () {
                 this._wndHUD = new WndHUD();
             }
             return this._wndHUD;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(SingleWnd.prototype, "wndBattle", {
-        get: function () {
-            if (this._wndBattle == null) {
-                this._wndBattle = new WndBattle();
-            }
-            return this._wndBattle;
         },
         enumerable: true,
         configurable: true

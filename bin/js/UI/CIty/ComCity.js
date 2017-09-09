@@ -12,9 +12,14 @@ var ComCity = (function (_super) {
     ComCity.prototype.constructFromXML = function (xml) {
         _super.prototype.constructFromXML.call(this, xml);
         this.tShowGirl = this.getTransition("tShowGirl");
+        this.tShowFuncButtons = this.getTransition("tShowFuncButtons");
         this.EvenBind();
     };
     ComCity.prototype.EvenBind = function () {
+    };
+    ComCity.prototype.OnShow = function () {
+        this.tShowGirl.play();
+        this.tShowFuncButtons.play();
     };
     return ComCity;
 }(fairygui.GComponent));

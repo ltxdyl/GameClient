@@ -9,6 +9,13 @@ var WndMenu = (function (_super) {
     function WndMenu() {
         return _super.call(this) || this;
     }
+    WndMenu.GetInst = function () {
+        if (this._wndMenu == null) {
+            this._wndMenu = new WndMenu();
+            this._wndMenu.animation = ["eject", "shrink"];
+        }
+        return this._wndMenu;
+    };
     WndMenu.prototype.onInit = function () {
         this.contentPane = fairygui.UIPackage.createObject("Menu", "WndMenu").asCom;
         this.btnNotice = this.contentPane.getChild("btnNotice").asButton;
@@ -35,6 +42,7 @@ var WndMenu = (function (_super) {
     };
     //邮件
     WndMenu.prototype.OnBtnMailClick = function () {
+        WndMail.Inst().show();
     };
     //排行榜
     WndMenu.prototype.OnBtnRankListClick = function () {
@@ -50,4 +58,5 @@ var WndMenu = (function (_super) {
     };
     return WndMenu;
 }(WindowBase));
+WndMenu._wndMenu = null;
 //# sourceMappingURL=WndMenu.js.map

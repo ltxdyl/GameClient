@@ -9,6 +9,12 @@ var WndHUD = (function (_super) {
     function WndHUD() {
         return _super.call(this) || this;
     }
+    WndHUD.GetInst = function () {
+        if (this._wndHUD == null) {
+            this._wndHUD = new WndHUD();
+        }
+        return this._wndHUD;
+    };
     WndHUD.prototype.onInit = function () {
         this.contentPane = fairygui.UIPackage.createObject("HUD", "WndHUD").asCom;
         this.tShowButton = this.contentPane.getTransition("tShowButton");
@@ -20,6 +26,7 @@ var WndHUD = (function (_super) {
         this.btnRole = this.contentPane.getChild("btnRole").asButton;
         this.btnPet = this.contentPane.getChild("btnPet").asButton;
         this.comCity = this.contentPane.getChild("comCity");
+        this.comBattle = this.contentPane.getChild("comBattle");
         this.EventBind();
     };
     WndHUD.prototype.EventBind = function () {
@@ -32,11 +39,12 @@ var WndHUD = (function (_super) {
         this.btnPet.onClick(this, this.OnBtnPetClick);
     };
     WndHUD.prototype.OnShown = function () {
+        this.OnBtnCityClick();
         this.ShowMenuAndTaskButton();
     };
     //菜单
     WndHUD.prototype.OnBtnMenuClick = function () {
-        SingleWnd.GetInst().wndMenu.show();
+        WndMenu.GetInst().show();
     };
     //任务
     WndHUD.prototype.OnBtnTaskClick = function () {
@@ -44,7 +52,7 @@ var WndHUD = (function (_super) {
     //主城
     WndHUD.prototype.OnBtnCityClick = function () {
         this.ShowMenuAndTaskButton();
-        this.comCity.tShowGirl.play();
+        this.comCity.OnShow();
     };
     //背包
     WndHUD.prototype.OnBtnBagClick = function () {
@@ -53,6 +61,7 @@ var WndHUD = (function (_super) {
     //战斗
     WndHUD.prototype.OnBtnBattleClick = function () {
         this.ShowMenuAndTaskButton();
+        this.comBattle.OnShow();
     };
     //角色
     WndHUD.prototype.OnBtnRoleClick = function () {
@@ -68,4 +77,5 @@ var WndHUD = (function (_super) {
     };
     return WndHUD;
 }(WindowBase));
+WndHUD._wndHUD = null;
 //# sourceMappingURL=WndHUD.js.map

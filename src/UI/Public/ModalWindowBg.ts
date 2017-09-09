@@ -1,6 +1,6 @@
 //模态窗口背景组件
 //父类为windowbase对象
-class ModalWindowBg extends fairygui.GComponent{
+class ModalWindowBg extends fairygui.GLabel{
 
 	public btnClose:fairygui.GButton;
 

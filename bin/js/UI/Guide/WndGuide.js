@@ -9,8 +9,15 @@ var WndGuide = (function (_super) {
     function WndGuide() {
         return _super.call(this) || this;
     }
+    WndGuide.GetInst = function () {
+        if (this._wndGuide == null) {
+            this._wndGuide = new WndGuide();
+        }
+        return this._wndGuide;
+    };
     WndGuide.prototype.onInit = function () {
-        this.contentPane = fairygui.UIPackage.createObject("Task", "WndGuide").asCom;
+        this.name = "WndGuide";
+        this.contentPane = fairygui.UIPackage.createObject("Task", this.name).asCom;
         this.TopMask = this.contentPane.getChild("TopMask").asImage;
         this.BottomMask = this.contentPane.getChild("BottomMask").asImage;
         this.LeftMask = this.contentPane.getChild("LeftMask").asImage;
@@ -18,22 +25,18 @@ var WndGuide = (function (_super) {
         this.GuideIcon = this.contentPane.getChild("GuideIcon").asLoader;
     };
     WndGuide.prototype.OnShown = function () {
-        var obj = this.GetGuideUI("wndLogin.infos");
+        var obj = this.GetGuideUI("WndLogin.btnLogin");
         this.SetGuideMask(obj);
     };
     //获取引导UI
     WndGuide.prototype.GetGuideUI = function (guideObj) {
         var objPaths = guideObj.split(".");
-        var obj = SingleWnd.GetInst();
-        for (var _i = 0, objPaths_1 = objPaths; _i < objPaths_1.length; _i++) {
-            var path = objPaths_1[_i];
-            for (var name_1 in obj) {
-                if (name_1 == path) {
-                    obj = obj[name_1];
-                }
-            }
+        var uiRoot = fairygui.GRoot.inst;
+        var obj = uiRoot.getChild(objPaths[0]).contentPane;
+        for (var i = 1; i < objPaths.length; i++) {
+            obj = obj.getChild(objPaths[i]).asCom;
         }
-        return obj;
+        return obj.asCom;
     };
     //设置引导遮罩
     WndGuide.prototype.SetGuideMask = function (guideUI) {
@@ -65,4 +68,5 @@ var WndGuide = (function (_super) {
     };
     return WndGuide;
 }(WindowBase));
+WndGuide._wndGuide = null;
 //# sourceMappingURL=WndGuide.js.map

@@ -7,12 +7,23 @@ class WndGuide extends WindowBase{
     RightMask:fairygui.GImage;
     GuideIcon:fairygui.GLoader;
 
+    private static _wndGuide:WndGuide = null;
+    public static GetInst():WndGuide
+    {
+        if(this._wndGuide == null)
+        {
+            this._wndGuide = new WndGuide();
+        }
+        return this._wndGuide;
+    }
+
     public constructor(){
         super();
     }
 
     protected onInit():void{
-        this.contentPane = fairygui.UIPackage.createObject("Task","WndGuide").asCom
+        this.name = "WndGuide";
+        this.contentPane = fairygui.UIPackage.createObject("Task",this.name).asCom
         this.TopMask = this.contentPane.getChild("TopMask").asImage;
         this.BottomMask = this.contentPane.getChild("BottomMask").asImage;
         this.LeftMask = this.contentPane.getChild("LeftMask").asImage;
@@ -21,25 +32,20 @@ class WndGuide extends WindowBase{
     }
 
     protected OnShown():void{
-        let obj = this.GetGuideUI("wndLogin.infos")
+        let obj = this.GetGuideUI("WndLogin.btnLogin")
         this.SetGuideMask(obj);
     }
 
     //获取引导UI
     protected GetGuideUI(guideObj:string):fairygui.GComponent{
         let objPaths = guideObj.split(".");
-        let obj = SingleWnd.GetInst()
-        for(let path of objPaths)
+        let uiRoot = fairygui.GRoot.inst;
+        let obj = (<WindowBase>uiRoot.getChild(objPaths[0])).contentPane;
+        for(let i = 1;i < objPaths.length; i++)
         {
-            for(let name in obj)
-            {
-                if(name == path)
-                {
-                    obj = obj[name];
-                }
-            }
+            obj = obj.getChild(objPaths[i]).asCom;
         }
-        return obj;
+        return obj.asCom;
     }
 
     //设置引导遮罩

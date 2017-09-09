@@ -5,7 +5,7 @@ var Battle;
         function BattleBinder() {
         }
         BattleBinder.bindAll = function () {
-            fairygui.UIObjectFactory.setPackageItemExtension(Battle.UIWndBattle.URL, Battle.UIWndBattle);
+            fairygui.UIObjectFactory.setPackageItemExtension(Battle.UIComBattle.URL, Battle.UIComBattle);
         };
         return BattleBinder;
     }());

@@ -3,12 +3,24 @@ class WndLogin extends WindowBase
 {
     private btnLogin:fairygui.GButton;
 
+    private static _wndLogin:WndLogin = null;
+    public static GetInst():WndLogin
+    {
+        if(this._wndLogin == null)
+        {
+            this._wndLogin = new WndLogin();
+            this._wndLogin.animation = ["fade_in","shrink"];
+        }
+        return this._wndLogin;
+    }
+
     public constructor() {
         super();
     }
     
     protected onInit():void {
-        this.contentPane = fairygui.UIPackage.createObject("Login","WndLogin").asCom;
+        this.name = "WndLogin";
+        this.contentPane = fairygui.UIPackage.createObject("Login",this.name).asCom;
         this.btnLogin = this.contentPane.getChild("btnLogin").asButton;
 
         this.EventBind();
@@ -23,7 +35,7 @@ class WndLogin extends WindowBase
     }
 
     protected OnBtnLoginOnClick():void{
-        SingleWnd.GetInst().wndHUD.show();
+        WndHUD.GetInst().show();
         this.hide();
     }
 }

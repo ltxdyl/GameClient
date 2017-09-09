@@ -17,7 +17,6 @@ var GameMain = (function () {
             { url: "res/ui/Public.fui", type: Loader.BUFFER },
             { url: "res/ui/Login@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/Login.fui", type: Loader.BUFFER },
-            { url: "res/ui/Battle@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/Battle.fui", type: Loader.BUFFER },
             { url: "res/ui/Bag@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/Bag.fui", type: Loader.BUFFER },
@@ -33,7 +32,8 @@ var GameMain = (function () {
         Laya.stage.addChild(fairygui.GRoot.inst.displayObject);
         this.addPackage();
         this.bindAll();
-        SingleWnd.GetInst().wndLogin.show();
+        WndLogin.GetInst().show();
+        WndGuide.GetInst().show();
     };
     ;
     //统一添加UI包
@@ -53,6 +53,7 @@ var GameMain = (function () {
         fairygui.UIObjectFactory.setPackageItemExtension("ui://Public/ModalWindowBg", ModalWindowBg);
         fairygui.UIObjectFactory.setPackageItemExtension("ui://City/ComCity", ComCity);
         fairygui.UIObjectFactory.setPackageItemExtension("ui://Bag/ComBag", ComBag);
+        fairygui.UIObjectFactory.setPackageItemExtension("ui://Battle/ComBattle", ComBattle);
     };
     return GameMain;
 }());

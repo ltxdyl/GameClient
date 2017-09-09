@@ -9,6 +9,17 @@ class WndMenu extends WindowBase
     private btnBlackList:fairygui.GButton;
     private btnLoginout:fairygui.GButton;
 
+    private static _wndMenu:WndMenu = null;
+    public static GetInst():WndMenu
+    {
+        if(this._wndMenu == null)
+        {
+            this._wndMenu = new WndMenu();
+            this._wndMenu.animation = ["eject","shrink"];
+        }
+        return this._wndMenu;
+    }
+
     public constructor() {
         super();
     }
@@ -49,7 +60,7 @@ class WndMenu extends WindowBase
     //邮件
     protected OnBtnMailClick():void
     {
-
+        WndMail.Inst().show()
     }
 
     //排行榜

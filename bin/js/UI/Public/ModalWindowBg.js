@@ -22,5 +22,5 @@ var ModalWindowBg = (function (_super) {
         this.parent.parent.hide();
     };
     return ModalWindowBg;
-}(fairygui.GComponent));
+}(fairygui.GLabel));
 //# sourceMappingURL=ModalWindowBg.js.map

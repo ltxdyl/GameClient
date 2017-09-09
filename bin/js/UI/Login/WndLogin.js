@@ -9,8 +9,16 @@ var WndLogin = (function (_super) {
     function WndLogin() {
         return _super.call(this) || this;
     }
+    WndLogin.GetInst = function () {
+        if (this._wndLogin == null) {
+            this._wndLogin = new WndLogin();
+            this._wndLogin.animation = ["fade_in", "shrink"];
+        }
+        return this._wndLogin;
+    };
     WndLogin.prototype.onInit = function () {
-        this.contentPane = fairygui.UIPackage.createObject("Login", "WndLogin").asCom;
+        this.name = "WndLogin";
+        this.contentPane = fairygui.UIPackage.createObject("Login", this.name).asCom;
         this.btnLogin = this.contentPane.getChild("btnLogin").asButton;
         this.EventBind();
     };
@@ -20,9 +28,10 @@ var WndLogin = (function (_super) {
     WndLogin.prototype.OnShown = function () {
     };
     WndLogin.prototype.OnBtnLoginOnClick = function () {
-        SingleWnd.GetInst().wndHUD.show();
+        WndHUD.GetInst().show();
         this.hide();
     };
     return WndLogin;
 }(WindowBase));
+WndLogin._wndLogin = null;
 //# sourceMappingURL=WndLogin.js.map
