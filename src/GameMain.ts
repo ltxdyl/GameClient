@@ -28,6 +28,7 @@ class GameMain {
             { url: "res/ui/HUD@atlas0.png", type: Loader.IMAGE},
             { url: "res/ui/HUD.fui", type: Loader.BUFFER },
             { url: "res/ui/Menu.fui", type: Loader.BUFFER },
+            { url: "res/ui/Danmaku.fui", type: Loader.BUFFER },
         ], Handler.create(this, this.onLoaded));
     }
 
@@ -48,7 +49,8 @@ class GameMain {
         UIPackage.addPackage("res/ui/HUD");
         UIPackage.addPackage("res/ui/Menu");
         UIPackage.addPackage("res/ui/City");
-        UIPackage.addPackage("res/ui/Bag")
+        UIPackage.addPackage("res/ui/Bag");
+        UIPackage.addPackage("res/ui/Danmaku")
     };
 
     //统一绑定扩展组件

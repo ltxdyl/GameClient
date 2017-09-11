@@ -15,7 +15,8 @@ var WndMail = (function (_super) {
         return this._wndMail;
     };
     WndMail.prototype.onInit = function () {
-        this.contentPane = fairygui.UIPackage.createObject("Menu", "WndMail").asCom;
+        this.name = "WndMail";
+        this.contentPane = fairygui.UIPackage.createObject("Menu", this.name).asCom;
         this.modal = true;
     };
     WndMail.prototype.EventBind = function () {
