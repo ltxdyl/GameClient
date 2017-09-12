@@ -35,7 +35,8 @@ class WndLogin extends WindowBase
     }
 
     protected OnBtnLoginOnClick():void{
-        WndHUD.GetInst().show();
-        this.hide();
+        let websocket = new GoWebSocket();
+        //WndHUD.GetInst().show();
+        //this.hide();
     }
 }

@@ -28,8 +28,9 @@ var WndLogin = (function (_super) {
     WndLogin.prototype.OnShown = function () {
     };
     WndLogin.prototype.OnBtnLoginOnClick = function () {
-        WndHUD.GetInst().show();
-        this.hide();
+        var websocket = new GoWebSocket();
+        //WndHUD.GetInst().show();
+        //this.hide();
     };
     return WndLogin;
 }(WindowBase));
