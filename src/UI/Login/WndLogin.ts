@@ -35,9 +35,7 @@ class WndLogin extends WindowBase
     }
 
     protected OnBtnLoginOnClick():void{
-        GoWebSocket.GetInst().send("{\"Login\":{ \"Name\":\"1\"}}");
-        //Base64.GetInst().test();
-        //WndHUD.GetInst().show();
-        //this.hide();
+        WndHUD.GetInst().show();
+        this.hide();
     }
 }
