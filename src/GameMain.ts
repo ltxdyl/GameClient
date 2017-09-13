@@ -33,6 +33,7 @@ class GameMain {
     }
 
     onLoaded():void {
+        GoWebSocket.GetInst();//初始化网络连接
         Laya.stage.addChild(fairygui.GRoot.inst.displayObject);
         this.addPackage();
         this.bindAll();

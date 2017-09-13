@@ -28,7 +28,8 @@ var WndLogin = (function (_super) {
     WndLogin.prototype.OnShown = function () {
     };
     WndLogin.prototype.OnBtnLoginOnClick = function () {
-        var websocket = new GoWebSocket();
+        GoWebSocket.GetInst().send("{\"Login\":{ \"Name\":\"1\"}}");
+        //Base64.GetInst().test();
         //WndHUD.GetInst().show();
         //this.hide();
     };

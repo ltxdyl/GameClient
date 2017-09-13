@@ -30,6 +30,7 @@ var GameMain = (function () {
         ], Handler.create(this, this.onLoaded));
     }
     GameMain.prototype.onLoaded = function () {
+        GoWebSocket.GetInst(); //初始化网络连接
         Laya.stage.addChild(fairygui.GRoot.inst.displayObject);
         this.addPackage();
         this.bindAll();

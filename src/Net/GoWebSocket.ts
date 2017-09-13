@@ -3,11 +3,24 @@ import Socket = Laya.Socket;
 import Byte = Laya.Byte;
 
 class GoWebSocket{
+
+	private connected:boolean;
     private socket: Socket;
 	private output: Byte;
 
+	private static _goWebSocket:GoWebSocket = null;
+	public static GetInst():GoWebSocket
+	{
+		if(this._goWebSocket == null)
+        {
+			this._goWebSocket = new GoWebSocket();
+        }
+		return this._goWebSocket;
+	}
+
     constructor()
     {
+		this.connected = false;
         this.connect();
     }
 
@@ -22,19 +35,22 @@ class GoWebSocket{
 	}
 
 	private onSocketOpen(): void {
+		this.connected = true;
 		console.log("Connected");
 		// 发送字符串
-		this.socket.send(JSON.stringify({Login:{ Name:'1'}}));
+		//let sendStr = JSON.stringify({Login:{ Name:'1'}})
+		//this.socket.send(sendStr);
 
 		// 使用output.writeByte发送
 		// var message: string = "demonstrate <output.writeByte>";
 		// for (var i: number = 0; i < message.length; ++i) {
 		// 	this.output.writeByte(message.charCodeAt(i));
 		// }
-		this.socket.flush();
+		//this.socket.flush();
 	}
 
 	private onSocketClose(): void {
+		this.connected = false;
 		console.log("Socket closed");
 	}
 
@@ -50,6 +66,18 @@ class GoWebSocket{
 	}
 
 	private onConnectError(e: Event): void {
+		this.connected = false;
 		console.log("error");
+	}
+
+	public send(content:string):void{
+		if(this.connected == false)
+		{
+			console.debug("socket closed")
+			return;
+		}
+        console.info("send:" + content);
+		this.socket.send(content);
+        this.socket.flush();
 	}
 }
