@@ -22,5 +22,5 @@ var ComCity = (function (_super) {
         this.tShowFuncButtons.play();
     };
     return ComCity;
-}(fairygui.GComponent));
+}(GComponent));
 //# sourceMappingURL=ComCity.js.map

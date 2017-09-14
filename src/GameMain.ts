@@ -1,7 +1,3 @@
-import Handler = laya.utils.Handler;
-import Loader = laya.net.Loader;
-import UIPackage = fairygui.UIPackage;
-
 // 程序入口
 class GameMain {
     constructor()
@@ -34,11 +30,11 @@ class GameMain {
 
     onLoaded():void {
         //GoWebSocket.GetInst();//初始化网络连接
-        Laya.stage.addChild(fairygui.GRoot.inst.displayObject);
+        Laya.stage.addChild(GRoot.inst.displayObject);
         this.addPackage();
         this.bindAll();
-        WndLogin.GetInst().show();
-        WndGuide.GetInst().show();
+        //WndLogin.GetInst().show();
+        WndDanmaku.GetInst().show();
     };
 
     //统一添加UI包
@@ -56,10 +52,11 @@ class GameMain {
 
     //统一绑定扩展组件
     bindAll():void{
-        fairygui.UIObjectFactory.setPackageItemExtension("ui://Public/ModalWindowBg",ModalWindowBg);
-        fairygui.UIObjectFactory.setPackageItemExtension("ui://City/ComCity",ComCity);
-        fairygui.UIObjectFactory.setPackageItemExtension("ui://Bag/ComBag",ComBag);
-        fairygui.UIObjectFactory.setPackageItemExtension("ui://Battle/ComBattle",ComBattle);
+        UIObjectFactory.setPackageItemExtension("ui://Public/ModalWindowBg",ModalWindowBg);
+        UIObjectFactory.setPackageItemExtension("ui://City/ComCity",ComCity);
+        UIObjectFactory.setPackageItemExtension("ui://Bag/ComBag",ComBag);
+        UIObjectFactory.setPackageItemExtension("ui://Battle/ComBattle",ComBattle);
+        UIObjectFactory.setPackageItemExtension("ui://Danmaku/DanmakuItem",DanmakuItem);
     }
 
 }

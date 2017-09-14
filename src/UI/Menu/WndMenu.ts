@@ -2,12 +2,12 @@
 class WndMenu extends WindowBase
 {
     private modelBg:ModalWindowBg;
-    private btnNotice:fairygui.GButton;
-    private btnMail:fairygui.GButton;
-    private btnRankList:fairygui.GButton;
-    private btnSetting:fairygui.GButton;
-    private btnBlackList:fairygui.GButton;
-    private btnLoginout:fairygui.GButton;
+    private btnNotice:GButton;
+    private btnMail:GButton;
+    private btnRankList:GButton;
+    private btnSetting:GButton;
+    private btnBlackList:GButton;
+    private btnLoginout:GButton;
 
     private static _wndMenu:WndMenu = null;
     public static GetInst():WndMenu
@@ -25,7 +25,7 @@ class WndMenu extends WindowBase
     }
     
     protected onInit():void {
-        this.contentPane = fairygui.UIPackage.createObject("Menu","WndMenu").asCom;
+        this.contentPane = UIPackage.createObject("Menu","WndMenu").asCom;
 
         this.btnNotice = this.contentPane.getChild("btnNotice").asButton;
         this.btnMail = this.contentPane.getChild("btnMail").asButton;

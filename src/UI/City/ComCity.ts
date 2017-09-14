@@ -1,8 +1,8 @@
 //主城面板组件
-class ComCity extends fairygui.GComponent{
+class ComCity extends GComponent{
 
-    public tShowGirl:fairygui.Transition;
-	public tShowFuncButtons:fairygui.Transition;
+    public tShowGirl:Transition;
+	public tShowFuncButtons:Transition;
 
 	public constructor() {
 		super();

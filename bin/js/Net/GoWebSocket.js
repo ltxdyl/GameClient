@@ -1,6 +1,4 @@
-var LayaEvent = Laya.Event;
-var Socket = Laya.Socket;
-var Byte = Laya.Byte;
+//网络管理类
 var GoWebSocket = (function () {
     function GoWebSocket() {
         this.connected = false;
@@ -59,6 +57,7 @@ var GoWebSocket = (function () {
         }
         console.info("send:" + content);
         this.socket.send(content);
+        this.socket.flush();
     };
     return GoWebSocket;
 }());

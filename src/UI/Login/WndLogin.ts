@@ -1,7 +1,7 @@
 //测试界面
 class WndLogin extends WindowBase
 {
-    private btnLogin:fairygui.GButton;
+    private btnLogin:GButton;
 
     private static _wndLogin:WndLogin = null;
     public static GetInst():WndLogin
@@ -20,7 +20,7 @@ class WndLogin extends WindowBase
     
     protected onInit():void {
         this.name = "WndLogin";
-        this.contentPane = fairygui.UIPackage.createObject("Login",this.name).asCom;
+        this.contentPane = UIPackage.createObject("Login",this.name).asCom;
         this.btnLogin = this.contentPane.getChild("btnLogin").asButton;
 
         this.EventBind();
@@ -35,7 +35,8 @@ class WndLogin extends WindowBase
     }
 
     protected OnBtnLoginOnClick():void{
-        WndHUD.GetInst().show();
+        //WndHUD.GetInst().show();
+        WndDanmaku.GetInst().show();
         this.hide();
     }
 }

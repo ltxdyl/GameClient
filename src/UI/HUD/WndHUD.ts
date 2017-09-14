@@ -1,14 +1,14 @@
 //HUD窗口
 class WndHUD extends WindowBase
 {
-    private tShowButton:fairygui.Transition;
-    private btnMenu:fairygui.GButton;
-    private btnTask:fairygui.GButton;
-    private btnCity:fairygui.GButton;
-    private btnBag:fairygui.GButton;
-    private btnBattle:fairygui.GButton;
-    private btnRole:fairygui.GButton;
-    private btnPet:fairygui.GButton;
+    private tShowButton:Transition;
+    private btnMenu:GButton;
+    private btnTask:GButton;
+    private btnCity:GButton;
+    private btnBag:GButton;
+    private btnBattle:GButton;
+    private btnRole:GButton;
+    private btnPet:GButton;
 
     private comCity:ComCity;//主城组件
     private comBattle:ComBattle;//战斗组件
@@ -28,7 +28,7 @@ class WndHUD extends WindowBase
     }
     
     protected onInit():void {
-        this.contentPane = fairygui.UIPackage.createObject("HUD","WndHUD").asCom;
+        this.contentPane = UIPackage.createObject("HUD","WndHUD").asCom;
 
         this.tShowButton = this.contentPane.getTransition("tShowButton")
         this.btnMenu = this.contentPane.getChild("btnMenu").asButton;

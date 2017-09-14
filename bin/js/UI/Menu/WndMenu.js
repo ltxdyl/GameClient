@@ -17,7 +17,7 @@ var WndMenu = (function (_super) {
         return this._wndMenu;
     };
     WndMenu.prototype.onInit = function () {
-        this.contentPane = fairygui.UIPackage.createObject("Menu", "WndMenu").asCom;
+        this.contentPane = UIPackage.createObject("Menu", "WndMenu").asCom;
         this.btnNotice = this.contentPane.getChild("btnNotice").asButton;
         this.btnMail = this.contentPane.getChild("btnMail").asButton;
         this.btnRankList = this.contentPane.getChild("btnRankList").asButton;

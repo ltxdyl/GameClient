@@ -1,5 +1,3 @@
-import GTextField = fairygui.GTextField;
-
 //弹幕移动方向
 enum DanmakuMoveDir{LeftToRight,RightToLeft};
 
@@ -10,7 +8,7 @@ class DanmakuMaster {
     public maxNum:number;//最大弹幕数量
     public moveSpeed:number;//移动速度(移动一屏／秒)
 
-    private textPool:Array<fairygui.GTextField>;//弹幕组件池
+    private textPool:Array<DanmakuItem>;//弹幕组件池
 
     constructor()
     {
@@ -23,40 +21,41 @@ class DanmakuMaster {
 
     //初始化字幕组件池
     private initTextPool():void{
-        this.textPool = new Array<GTextField>();
+        this.textPool = new Array<DanmakuItem>();
         for(var i = 0; i < this.maxNum; i++)
         {
-            this.textPool.push(new GTextField());
+            let textField = new DanmakuItem();
+            this.textPool.push(textField);
         }
     }
 
     //获取可用的组件
-    public getFromPool():GTextField{
-        let textField:GTextField = this.textPool.pop();
+    public getFromPool():DanmakuItem{
+        let textField:DanmakuItem = this.textPool.pop();
         textField.visible = true;
         return textField;
     }
 
     //将组件放回池子
-    public returnToPool(textField:GTextField):void{
+    public returnToPool(textField:DanmakuItem):void{
         textField.visible = false;
         this.textPool.push(textField);
     }
 
     //获取起止x轴坐标
-    public getPosX(textObj:fairygui.GTextField){
+    public getPosX(textObj:DanmakuItem){
         let posX:number[] = [0,0];
         switch (this.moveDir) {
             case DanmakuMoveDir.RightToLeft:
-                posX[0] = fairygui.GRoot.inst.width;
+                posX[0] = GRoot.inst.width;
                 posX[1] = -textObj.width;
                 break;
             case DanmakuMoveDir.LeftToRight:
                 posX[0] = -textObj.width;
-                posX[1] = fairygui.GRoot.inst.width;
+                posX[1] = GRoot.inst.width;
                 break;
             default:
-                posX[0] = fairygui.GRoot.inst.width;
+                posX[0] = GRoot.inst.width;
                 posX[1] = -textObj.width;
                 break;
         }
@@ -65,13 +64,13 @@ class DanmakuMaster {
 
     //获取y轴坐标
     public getPosY():number{
-        let posY = Math.random() * fairygui.GRoot.inst.height;
+        let posY = Math.random() * GRoot.inst.height;
         return posY;
     }
 
     //获取移动时间
     public getMoveTime():number{
-        let moveTime:number = 0;
+        let moveTime:number = this.moveSpeed + Math.random() * 3;
         return moveTime;
     }
 

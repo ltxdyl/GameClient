@@ -1,36 +1,69 @@
-var GTextField = fairygui.GTextField;
 //弹幕移动方向
 var DanmakuMoveDir;
 (function (DanmakuMoveDir) {
-    DanmakuMoveDir[DanmakuMoveDir["Left"] = 0] = "Left";
-    DanmakuMoveDir[DanmakuMoveDir["Right"] = 1] = "Right";
+    DanmakuMoveDir[DanmakuMoveDir["LeftToRight"] = 0] = "LeftToRight";
+    DanmakuMoveDir[DanmakuMoveDir["RightToLeft"] = 1] = "RightToLeft";
 })(DanmakuMoveDir || (DanmakuMoveDir = {}));
 ;
 //弹幕管理类
 var DanmakuMaster = (function () {
     function DanmakuMaster() {
-        this.moveDir = DanmakuMoveDir.Left;
+        this.moveDir = DanmakuMoveDir.RightToLeft;
         this.maxNum = 30;
         this.moveSpeed = 10;
+        this.initTextPool();
     }
     //初始化字幕组件池
     DanmakuMaster.prototype.initTextPool = function () {
         this.textPool = new Array();
         for (var i = 0; i < this.maxNum; i++) {
-            this.textPool.push(new GTextField());
+            var textField = new DanmakuItem();
+            this.textPool.push(textField);
         }
     };
     //获取可用的组件
-    DanmakuMaster.prototype.GetFromPool = function () {
-        return this.textPool.pop();
+    DanmakuMaster.prototype.getFromPool = function () {
+        var textField = this.textPool.pop();
+        textField.visible = true;
+        return textField;
     };
     //将组件放回池子
-    DanmakuMaster.prototype.ReturnToPool = function (textField) {
+    DanmakuMaster.prototype.returnToPool = function (textField) {
+        textField.visible = false;
         this.textPool.push(textField);
     };
-    //新增一条弹幕
-    DanmakuMaster.prototype.AddOneDanmaku = function (content) {
-        var textField = this.GetFromPool();
+    //获取起止x轴坐标
+    DanmakuMaster.prototype.getPosX = function (textObj) {
+        var posX = [0, 0];
+        switch (this.moveDir) {
+            case DanmakuMoveDir.RightToLeft:
+                posX[0] = GRoot.inst.width;
+                posX[1] = -textObj.width;
+                break;
+            case DanmakuMoveDir.LeftToRight:
+                posX[0] = -textObj.width;
+                posX[1] = GRoot.inst.width;
+                break;
+            default:
+                posX[0] = GRoot.inst.width;
+                posX[1] = -textObj.width;
+                break;
+        }
+        return posX;
+    };
+    //获取y轴坐标
+    DanmakuMaster.prototype.getPosY = function () {
+        var posY = Math.random() * GRoot.inst.height;
+        return posY;
+    };
+    //获取移动时间
+    DanmakuMaster.prototype.getMoveTime = function () {
+        var moveTime = this.moveSpeed + Math.random() * 3;
+        return moveTime;
+    };
+    DanmakuMaster.prototype.formatContent = function (content) {
+        var result = content;
+        return result;
     };
     return DanmakuMaster;
 }());

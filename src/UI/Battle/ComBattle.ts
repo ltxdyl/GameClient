@@ -1,10 +1,10 @@
 //战斗组件
-class ComBattle extends fairygui.GComponent
+class ComBattle extends GComponent
 {
-	public leftHP:fairygui.GProgressBar;
-	public leftMP:fairygui.GProgressBar;
-	public rightHP:fairygui.GProgressBar;
-	public rightMP:fairygui.GProgressBar;
+	public leftHP:GProgressBar;
+	public leftMP:GProgressBar;
+	public rightHP:GProgressBar;
+	public rightMP:GProgressBar;
 
 	public constructor() {
 		super();

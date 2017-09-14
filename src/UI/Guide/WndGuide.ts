@@ -1,11 +1,11 @@
 //引导界面
 class WndGuide extends WindowBase{
 
-    TopMask:fairygui.GImage;
-    BottomMask:fairygui.GImage;
-    LeftMask:fairygui.GImage;
-    RightMask:fairygui.GImage;
-    GuideIcon:fairygui.GLoader;
+    TopMask:GImage;
+    BottomMask:GImage;
+    LeftMask:GImage;
+    RightMask:GImage;
+    GuideIcon:GLoader;
 
     private static _wndGuide:WndGuide = null;
     public static GetInst():WndGuide
@@ -23,7 +23,7 @@ class WndGuide extends WindowBase{
 
     protected onInit():void{
         this.name = "WndGuide";
-        this.contentPane = fairygui.UIPackage.createObject("Task",this.name).asCom
+        this.contentPane = UIPackage.createObject("Task",this.name).asCom
         this.TopMask = this.contentPane.getChild("TopMask").asImage;
         this.BottomMask = this.contentPane.getChild("BottomMask").asImage;
         this.LeftMask = this.contentPane.getChild("LeftMask").asImage;
@@ -37,9 +37,9 @@ class WndGuide extends WindowBase{
     }
 
     //获取引导UI
-    protected GetGuideUI(guideObj:string):fairygui.GComponent{
+    protected GetGuideUI(guideObj:string):GComponent{
         let objPaths = guideObj.split(".");
-        let uiRoot = fairygui.GRoot.inst;
+        let uiRoot = GRoot.inst;
         let obj = (<WindowBase>uiRoot.getChild(objPaths[0])).contentPane;
         for(let i = 1;i < objPaths.length; i++)
         {
@@ -49,7 +49,7 @@ class WndGuide extends WindowBase{
     }
 
     //设置引导遮罩
-    protected SetGuideMask(guideUI:fairygui.GComponent):void{
+    protected SetGuideMask(guideUI:GComponent):void{
         let globalPos = guideUI.localToGlobal();
         let topPos = globalPos.y;
         let leftPos = globalPos.x;
@@ -61,12 +61,12 @@ class WndGuide extends WindowBase{
     //设置遮罩位置
     protected SetMask(topPos,bottomPos,leftPos,rightPos):void{
         this.TopMask.height = topPos;
-        this.TopMask.width = fairygui.GRoot.inst.width;
+        this.TopMask.width = GRoot.inst.width;
         this.TopMask.x = 0;
         this.TopMask.y = 0;
 
-        this.BottomMask.height = fairygui.GRoot.inst.height - bottomPos;
-        this.BottomMask.width = fairygui.GRoot.inst.width;
+        this.BottomMask.height = GRoot.inst.height - bottomPos;
+        this.BottomMask.width = GRoot.inst.width;
         this.BottomMask.x = 0;
         this.BottomMask.y = bottomPos;
 
@@ -76,7 +76,7 @@ class WndGuide extends WindowBase{
         this.LeftMask.y = topPos;
 
         this.RightMask.height = bottomPos - topPos;
-        this.RightMask.width = fairygui.GRoot.inst.width - rightPos;
+        this.RightMask.width = GRoot.inst.width - rightPos;
         this.RightMask.x = rightPos;
         this.RightMask.y = topPos;
     }

@@ -1,6 +1,3 @@
-var Handler = laya.utils.Handler;
-var Loader = laya.net.Loader;
-var UIPackage = fairygui.UIPackage;
 // 程序入口
 var GameMain = (function () {
     function GameMain() {
@@ -30,12 +27,12 @@ var GameMain = (function () {
         ], Handler.create(this, this.onLoaded));
     }
     GameMain.prototype.onLoaded = function () {
-        GoWebSocket.GetInst(); //初始化网络连接
-        Laya.stage.addChild(fairygui.GRoot.inst.displayObject);
+        //GoWebSocket.GetInst();//初始化网络连接
+        Laya.stage.addChild(GRoot.inst.displayObject);
         this.addPackage();
         this.bindAll();
-        WndLogin.GetInst().show();
-        WndGuide.GetInst().show();
+        //WndLogin.GetInst().show();
+        WndDanmaku.GetInst().show();
     };
     ;
     //统一添加UI包
@@ -53,10 +50,11 @@ var GameMain = (function () {
     ;
     //统一绑定扩展组件
     GameMain.prototype.bindAll = function () {
-        fairygui.UIObjectFactory.setPackageItemExtension("ui://Public/ModalWindowBg", ModalWindowBg);
-        fairygui.UIObjectFactory.setPackageItemExtension("ui://City/ComCity", ComCity);
-        fairygui.UIObjectFactory.setPackageItemExtension("ui://Bag/ComBag", ComBag);
-        fairygui.UIObjectFactory.setPackageItemExtension("ui://Battle/ComBattle", ComBattle);
+        UIObjectFactory.setPackageItemExtension("ui://Public/ModalWindowBg", ModalWindowBg);
+        UIObjectFactory.setPackageItemExtension("ui://City/ComCity", ComCity);
+        UIObjectFactory.setPackageItemExtension("ui://Bag/ComBag", ComBag);
+        UIObjectFactory.setPackageItemExtension("ui://Battle/ComBattle", ComBattle);
+        UIObjectFactory.setPackageItemExtension("ui://Danmaku/DanmakuItem", DanmakuItem);
     };
     return GameMain;
 }());

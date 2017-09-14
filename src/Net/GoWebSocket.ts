@@ -1,7 +1,4 @@
-import LayaEvent = Laya.Event;
-import Socket = Laya.Socket;
-import Byte = Laya.Byte;
-
+//网络管理类
 class GoWebSocket{
 
 	private connected:boolean;

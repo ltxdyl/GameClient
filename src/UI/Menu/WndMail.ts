@@ -14,7 +14,7 @@ class WndMail extends WindowBase
     
     protected onInit():void {
         this.name = "WndMail";
-        this.contentPane = fairygui.UIPackage.createObject("Menu",this.name).asCom;
+        this.contentPane = UIPackage.createObject("Menu",this.name).asCom;
         this.modal = true;
     }
 

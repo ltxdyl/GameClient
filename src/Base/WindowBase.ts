@@ -1,8 +1,5 @@
-import Tween = laya.utils.Tween
-import Ease = laya.utils.Ease
-
 //窗口基类
-class WindowBase extends fairygui.Window{
+class WindowBase extends GWindow{
 
     public animation:string[];//0 显示动画 1 关闭动画
     private _originPosX:number;
@@ -19,7 +16,7 @@ class WindowBase extends fairygui.Window{
     }
 
     public Popup(adjustObj):void{
-        fairygui.GRoot.inst.showPopup(this,adjustObj);
+        GRoot.inst.showPopup(this,adjustObj);
     }
 
     public show():void{
@@ -49,11 +46,11 @@ class WindowBase extends fairygui.Window{
                 Tween.to(this,{alpha:1},300,Ease.quadInOut,Handler.create(this,this.CallOnShown));
                 break;
             case "move_up":
-                this.y = fairygui.GRoot.inst.height;
+                this.y = GRoot.inst.height;
                 Tween.to(this,{y:this._originPosY},300,Ease.quadOut,Handler.create(this,this.CallOnShown));
                 break;
             case "move_left":
-                this.x = fairygui.GRoot.inst.width;
+                this.x = GRoot.inst.width;
                 Tween.to(this,{x:this._originPosX},300,Ease.quadInOut,Handler.create(this,this.CallOnShown));
                 break;
             case "move_right":
@@ -77,13 +74,13 @@ class WindowBase extends fairygui.Window{
                 Tween.to(this, { scaleX: 0.8,scaleY: 0.8 },200, Ease.expoIn, Handler.create(this, this.CallOnHide));
                 break;
             case "move_down":
-                Tween.to(this,{y:fairygui.GRoot.inst.height + 30},300,Ease.quadInOut,Handler.create(this,this.CallOnHide));
+                Tween.to(this,{y:GRoot.inst.height + 30},300,Ease.quadInOut,Handler.create(this,this.CallOnHide));
                 break;
             case "move_left":
                 Tween.to(this,{x:-this.width-30},300,Ease.quadInOut,Handler.create(this,this.CallOnHide));
                 break;
             case "move_right":
-                Tween.to(this,{x:fairygui.GRoot.inst.width + 30},300,Ease.quadInOut,Handler.create(this,this.CallOnHide));
+                Tween.to(this,{x:GRoot.inst.width + 30},300,Ease.quadInOut,Handler.create(this,this.CallOnHide));
                 break;
             default:
                 this.CallOnHide();

@@ -16,7 +16,7 @@ var WndHUD = (function (_super) {
         return this._wndHUD;
     };
     WndHUD.prototype.onInit = function () {
-        this.contentPane = fairygui.UIPackage.createObject("HUD", "WndHUD").asCom;
+        this.contentPane = UIPackage.createObject("HUD", "WndHUD").asCom;
         this.tShowButton = this.contentPane.getTransition("tShowButton");
         this.btnMenu = this.contentPane.getChild("btnMenu").asButton;
         this.btnTask = this.contentPane.getChild("btnTask").asButton;

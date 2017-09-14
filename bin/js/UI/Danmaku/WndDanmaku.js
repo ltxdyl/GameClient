@@ -9,18 +9,43 @@ var WndDanmaku = (function (_super) {
     function WndDanmaku() {
         return _super.call(this) || this;
     }
-    WndDanmaku.Inst = function () {
+    WndDanmaku.GetInst = function () {
         if (this._wndDanmaku == null)
             this._wndDanmaku = new WndDanmaku();
         return this._wndDanmaku;
     };
     WndDanmaku.prototype.onInit = function () {
+        this.danmakuMaster = new DanmakuMaster();
         this.name = "WndDanmaku";
-        this.contentPane = fairygui.UIPackage.createObject("Danmaku", this.name).asCom;
+        this.contentPane = UIPackage.createObject("Danmaku", this.name).asCom;
+        this.EventBind();
     };
     WndDanmaku.prototype.EventBind = function () {
+        this.onClick(this, this.wndOnClick);
     };
     WndDanmaku.prototype.OnShown = function () {
+    };
+    WndDanmaku.prototype.wndOnClick = function () {
+        this.addOneDanmaku("啊啊啊啊" + Math.random() * 10);
+    };
+    //新增一条弹幕
+    WndDanmaku.prototype.addOneDanmaku = function (content) {
+        var danmakuItem = this.danmakuMaster.getFromPool();
+        if (danmakuItem == null)
+            return;
+        this.contentPane.addChild(danmakuItem);
+        danmakuItem.title = "this.danmakuMaster.formatContent(content);";
+        var posX = this.danmakuMaster.getPosX(danmakuItem);
+        danmakuItem.x = posX[0];
+        danmakuItem.y = this.danmakuMaster.getPosY();
+        var moveTime = this.danmakuMaster.getMoveTime();
+        Tween.to(danmakuItem, { x: posX[1] }, moveTime, Ease.linearNone, Handler.create(this, this.moveOver, [danmakuItem]));
+    };
+    //移动结束
+    WndDanmaku.prototype.moveOver = function (danmakuItem) {
+        console.debug(danmakuItem.title);
+        //this.contentPane.removeChild(danmakuItem);
+        //this.danmakuMaster.returnToPool(danmakuItem);
     };
     return WndDanmaku;
 }(WindowBase));

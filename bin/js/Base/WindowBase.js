@@ -3,8 +3,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Tween = laya.utils.Tween;
-var Ease = laya.utils.Ease;
 //窗口基类
 var WindowBase = (function (_super) {
     __extends(WindowBase, _super);
@@ -19,7 +17,7 @@ var WindowBase = (function (_super) {
         return _this;
     }
     WindowBase.prototype.Popup = function (adjustObj) {
-        fairygui.GRoot.inst.showPopup(this, adjustObj);
+        GRoot.inst.showPopup(this, adjustObj);
     };
     WindowBase.prototype.show = function () {
         _super.prototype.show.call(this);
@@ -45,11 +43,11 @@ var WindowBase = (function (_super) {
                 Tween.to(this, { alpha: 1 }, 300, Ease.quadInOut, Handler.create(this, this.CallOnShown));
                 break;
             case "move_up":
-                this.y = fairygui.GRoot.inst.height;
+                this.y = GRoot.inst.height;
                 Tween.to(this, { y: this._originPosY }, 300, Ease.quadOut, Handler.create(this, this.CallOnShown));
                 break;
             case "move_left":
-                this.x = fairygui.GRoot.inst.width;
+                this.x = GRoot.inst.width;
                 Tween.to(this, { x: this._originPosX }, 300, Ease.quadInOut, Handler.create(this, this.CallOnShown));
                 break;
             case "move_right":
@@ -71,13 +69,13 @@ var WindowBase = (function (_super) {
                 Tween.to(this, { scaleX: 0.8, scaleY: 0.8 }, 200, Ease.expoIn, Handler.create(this, this.CallOnHide));
                 break;
             case "move_down":
-                Tween.to(this, { y: fairygui.GRoot.inst.height + 30 }, 300, Ease.quadInOut, Handler.create(this, this.CallOnHide));
+                Tween.to(this, { y: GRoot.inst.height + 30 }, 300, Ease.quadInOut, Handler.create(this, this.CallOnHide));
                 break;
             case "move_left":
                 Tween.to(this, { x: -this.width - 30 }, 300, Ease.quadInOut, Handler.create(this, this.CallOnHide));
                 break;
             case "move_right":
-                Tween.to(this, { x: fairygui.GRoot.inst.width + 30 }, 300, Ease.quadInOut, Handler.create(this, this.CallOnHide));
+                Tween.to(this, { x: GRoot.inst.width + 30 }, 300, Ease.quadInOut, Handler.create(this, this.CallOnHide));
                 break;
             default:
                 this.CallOnHide();
@@ -104,5 +102,5 @@ var WindowBase = (function (_super) {
     WindowBase.prototype.OnHide = function () {
     };
     return WindowBase;
-}(fairygui.Window));
+}(GWindow));
 //# sourceMappingURL=WindowBase.js.map

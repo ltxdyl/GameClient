@@ -18,7 +18,7 @@ var WndLogin = (function (_super) {
     };
     WndLogin.prototype.onInit = function () {
         this.name = "WndLogin";
-        this.contentPane = fairygui.UIPackage.createObject("Login", this.name).asCom;
+        this.contentPane = UIPackage.createObject("Login", this.name).asCom;
         this.btnLogin = this.contentPane.getChild("btnLogin").asButton;
         this.EventBind();
     };
@@ -28,10 +28,9 @@ var WndLogin = (function (_super) {
     WndLogin.prototype.OnShown = function () {
     };
     WndLogin.prototype.OnBtnLoginOnClick = function () {
-        GoWebSocket.GetInst().send("{\"Login\":{ \"Name\":\"1\"}}");
-        //Base64.GetInst().test();
         //WndHUD.GetInst().show();
-        //this.hide();
+        WndDanmaku.GetInst().show();
+        this.hide();
     };
     return WndLogin;
 }(WindowBase));

@@ -39,5 +39,5 @@ var ComBattle = (function (_super) {
         this.leftHP.tweenValue(5000, 1);
     };
     return ComBattle;
-}(fairygui.GComponent));
+}(GComponent));
 //# sourceMappingURL=ComBattle.js.map
