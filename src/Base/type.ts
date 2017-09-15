@@ -37,3 +37,15 @@ import GObjectPool = fairygui.GObjectPool
 import Relations = fairygui.Relations
 import RelationType = fairygui.RelationType
 import UIObjectFactory = fairygui.UIObjectFactory
+
+//Poker
+import PokerCard = Poker.PokerCard
+import PokerDeck = Poker.PokerDeck
+
+//枚举值
+
+//弹幕移动方向
+enum DanmakuMoveDir{LeftToRight,RightToLeft};
+
+//扑克牌花色
+enum PokerColor{Heart,Spade,Club,Diamond,Joker};

@@ -1,6 +1,3 @@
-//弹幕移动方向
-enum DanmakuMoveDir{LeftToRight,RightToLeft};
-
 //弹幕管理类
 class DanmakuMaster {
 
@@ -24,7 +21,7 @@ class DanmakuMaster {
         this.textPool = new Array<DanmakuItem>();
         for(var i = 0; i < this.maxNum; i++)
         {
-            let textField = new DanmakuItem();
+            let textField =  <DanmakuItem>UIPackage.createObject("Danmaku","DanmakuItem")
             this.textPool.push(textField);
         }
     }
@@ -32,8 +29,11 @@ class DanmakuMaster {
     //获取可用的组件
     public getFromPool():DanmakuItem{
         let textField:DanmakuItem = this.textPool.pop();
-        textField.visible = true;
-        return textField;
+        if (textField != undefined)
+        {
+            textField.visible = true;
+            return textField;
+        }
     }
 
     //将组件放回池子
@@ -70,12 +70,24 @@ class DanmakuMaster {
 
     //获取移动时间
     public getMoveTime():number{
-        let moveTime:number = this.moveSpeed + Math.random() * 3;
+        let moveTime:number = (this.moveSpeed + Math.random() * 3) * 1000;//毫秒
         return moveTime;
     }
 
+    //内容整理
     public formatContent(content:string):string{
         let result = content;
         return result;
+    }
+
+    //获取颜色
+    public GetContentColor(content:string):string{
+        for (var key in ColorConfig) {
+           if(content.indexOf(key) > 0)
+           {
+                return ColorConfig[key];
+           }
+        }
+        return "#FFFFFF";
     }
 }

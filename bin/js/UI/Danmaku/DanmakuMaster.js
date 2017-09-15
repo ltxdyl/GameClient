@@ -1,10 +1,3 @@
-//弹幕移动方向
-var DanmakuMoveDir;
-(function (DanmakuMoveDir) {
-    DanmakuMoveDir[DanmakuMoveDir["LeftToRight"] = 0] = "LeftToRight";
-    DanmakuMoveDir[DanmakuMoveDir["RightToLeft"] = 1] = "RightToLeft";
-})(DanmakuMoveDir || (DanmakuMoveDir = {}));
-;
 //弹幕管理类
 var DanmakuMaster = (function () {
     function DanmakuMaster() {
@@ -17,15 +10,17 @@ var DanmakuMaster = (function () {
     DanmakuMaster.prototype.initTextPool = function () {
         this.textPool = new Array();
         for (var i = 0; i < this.maxNum; i++) {
-            var textField = new DanmakuItem();
+            var textField = UIPackage.createObject("Danmaku", "DanmakuItem");
             this.textPool.push(textField);
         }
     };
     //获取可用的组件
     DanmakuMaster.prototype.getFromPool = function () {
         var textField = this.textPool.pop();
-        textField.visible = true;
-        return textField;
+        if (textField != undefined) {
+            textField.visible = true;
+            return textField;
+        }
     };
     //将组件放回池子
     DanmakuMaster.prototype.returnToPool = function (textField) {
@@ -58,12 +53,22 @@ var DanmakuMaster = (function () {
     };
     //获取移动时间
     DanmakuMaster.prototype.getMoveTime = function () {
-        var moveTime = this.moveSpeed + Math.random() * 3;
+        var moveTime = (this.moveSpeed + Math.random() * 3) * 1000; //毫秒
         return moveTime;
     };
+    //内容整理
     DanmakuMaster.prototype.formatContent = function (content) {
         var result = content;
         return result;
+    };
+    //获取颜色
+    DanmakuMaster.prototype.GetContentColor = function (content) {
+        for (var key in ColorConfig) {
+            if (content.indexOf(key) > 0) {
+                return ColorConfig[key];
+            }
+        }
+        return "#FFFFFF";
     };
     return DanmakuMaster;
 }());

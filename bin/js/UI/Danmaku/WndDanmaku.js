@@ -26,7 +26,10 @@ var WndDanmaku = (function (_super) {
     WndDanmaku.prototype.OnShown = function () {
     };
     WndDanmaku.prototype.wndOnClick = function () {
-        this.addOneDanmaku("啊啊啊啊" + Math.random() * 10);
+        var contents = ["红", "黄", "蓝", "绿", "粉"];
+        var index = Math.floor(Math.random() * 5);
+        console.debug(String(index));
+        this.addOneDanmaku("我是" + contents[index] + "色的");
     };
     //新增一条弹幕
     WndDanmaku.prototype.addOneDanmaku = function (content) {
@@ -34,7 +37,8 @@ var WndDanmaku = (function (_super) {
         if (danmakuItem == null)
             return;
         this.contentPane.addChild(danmakuItem);
-        danmakuItem.title = "this.danmakuMaster.formatContent(content);";
+        danmakuItem.titleColor = this.danmakuMaster.GetContentColor(content);
+        danmakuItem.text = this.danmakuMaster.formatContent(content);
         var posX = this.danmakuMaster.getPosX(danmakuItem);
         danmakuItem.x = posX[0];
         danmakuItem.y = this.danmakuMaster.getPosY();
@@ -43,9 +47,8 @@ var WndDanmaku = (function (_super) {
     };
     //移动结束
     WndDanmaku.prototype.moveOver = function (danmakuItem) {
-        console.debug(danmakuItem.title);
-        //this.contentPane.removeChild(danmakuItem);
-        //this.danmakuMaster.returnToPool(danmakuItem);
+        this.contentPane.removeChild(danmakuItem);
+        this.danmakuMaster.returnToPool(danmakuItem);
     };
     return WndDanmaku;
 }(WindowBase));

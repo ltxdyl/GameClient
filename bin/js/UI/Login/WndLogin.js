@@ -28,8 +28,7 @@ var WndLogin = (function (_super) {
     WndLogin.prototype.OnShown = function () {
     };
     WndLogin.prototype.OnBtnLoginOnClick = function () {
-        //WndHUD.GetInst().show();
-        WndDanmaku.GetInst().show();
+        WndHUD.GetInst().show();
         this.hide();
     };
     return WndLogin;

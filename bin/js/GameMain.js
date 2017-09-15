@@ -24,6 +24,7 @@ var GameMain = (function () {
             { url: "res/ui/HUD.fui", type: Loader.BUFFER },
             { url: "res/ui/Menu.fui", type: Loader.BUFFER },
             { url: "res/ui/Danmaku.fui", type: Loader.BUFFER },
+            { url: "res/ui/BlackJack.fui", type: Loader.BUFFER },
         ], Handler.create(this, this.onLoaded));
     }
     GameMain.prototype.onLoaded = function () {
@@ -32,7 +33,7 @@ var GameMain = (function () {
         this.addPackage();
         this.bindAll();
         //WndLogin.GetInst().show();
-        WndDanmaku.GetInst().show();
+        WndBlackJack.GetInst().show();
     };
     ;
     //统一添加UI包
@@ -46,15 +47,16 @@ var GameMain = (function () {
         UIPackage.addPackage("res/ui/City");
         UIPackage.addPackage("res/ui/Bag");
         UIPackage.addPackage("res/ui/Danmaku");
+        UIPackage.addPackage("res/ui/BlackJack");
     };
     ;
     //统一绑定扩展组件
     GameMain.prototype.bindAll = function () {
+        UIObjectFactory.setPackageItemExtension("ui://Danmaku/DanmakuItem", DanmakuItem);
         UIObjectFactory.setPackageItemExtension("ui://Public/ModalWindowBg", ModalWindowBg);
         UIObjectFactory.setPackageItemExtension("ui://City/ComCity", ComCity);
         UIObjectFactory.setPackageItemExtension("ui://Bag/ComBag", ComBag);
         UIObjectFactory.setPackageItemExtension("ui://Battle/ComBattle", ComBattle);
-        UIObjectFactory.setPackageItemExtension("ui://Danmaku/DanmakuItem", DanmakuItem);
     };
     return GameMain;
 }());

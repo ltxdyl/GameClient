@@ -35,8 +35,7 @@ class WndLogin extends WindowBase
     }
 
     protected OnBtnLoginOnClick():void{
-        //WndHUD.GetInst().show();
-        WndDanmaku.GetInst().show();
+        WndHUD.GetInst().show();
         this.hide();
     }
 }
