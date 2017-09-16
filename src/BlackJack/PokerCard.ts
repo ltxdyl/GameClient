@@ -1,4 +1,4 @@
-//一张扑克牌
+/**一张扑克牌*/
 module Poker{
     export class PokerCard{
         public num:number;

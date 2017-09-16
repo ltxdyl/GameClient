@@ -1,4 +1,4 @@
-//黑杰克界面
+/**黑杰克界面*/
 class WndBlackJack extends WindowBase{
 
     private static wndBlackJack:WndBlackJack = null;
@@ -34,10 +34,6 @@ class WndBlackJack extends WindowBase{
     }
 
     protected OnBtnTestOnClick():void{
-        let pokerDeck = new PokerDeck(true);
-        console.debug(pokerDeck.toString());
-        pokerDeck.shuffle();
-        console.debug("-------------------------------");
-        console.debug(pokerDeck.toString());
+
     }
 }

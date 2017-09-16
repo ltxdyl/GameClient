@@ -1,4 +1,4 @@
-//战斗组件
+/**战斗组件*/
 class ComBattle extends GComponent
 {
 	public leftHP:GProgressBar;

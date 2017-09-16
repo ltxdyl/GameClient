@@ -1,4 +1,4 @@
-//弹幕管理类
+/**弹幕管理类*/
 class DanmakuMaster {
 
     public moveDir:DanmakuMoveDir;

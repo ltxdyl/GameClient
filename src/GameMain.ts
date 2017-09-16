@@ -11,6 +11,8 @@ class GameMain {
         //设置横竖屏
         Laya.stage.screenMode = "vertical";
         Laya.loader.load([
+            { url: "res/ui/Icon@atlas0.png", type: Loader.IMAGE},
+            { url: "res/ui/Icon.fui", type: Loader.BUFFER },
             { url: "res/ui/Public@atlas0.png", type: Loader.IMAGE},
             { url: "res/ui/Public.fui", type: Loader.BUFFER },
             { url: "res/ui/Login@atlas0.png", type: Loader.IMAGE},
@@ -41,6 +43,7 @@ class GameMain {
     //统一添加UI包
     addPackage():void{
         UIPackage.addPackage("res/ui/Public");
+        UIPackage.addPackage("res/ui/Icon");
         UIPackage.addPackage("res/ui/Task");
         UIPackage.addPackage("res/ui/Login");
         UIPackage.addPackage("res/ui/Battle");
