@@ -44,8 +44,17 @@ import PokerDeck = Poker.PokerDeck
 
 //枚举值
 
-//弹幕移动方向
+/**
+ * 弹幕移动方向
+ */
 enum DanmakuMoveDir{LeftToRight,RightToLeft};
 
-//扑克牌花色
+/**
+ * 扑克牌花色
+ */
 enum PokerColor{Heart,Spade,Club,Diamond,Joker};
+
+/**
+ * 玩家状态
+ */
+enum PokerPlayerState{Normal,Lose};

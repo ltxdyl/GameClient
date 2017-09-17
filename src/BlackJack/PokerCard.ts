@@ -1,5 +1,7 @@
-/**一张扑克牌*/
 module Poker{
+    /**
+     * 一张扑克牌
+     */
     export class PokerCard{
         public num:number;
         public color:PokerColor;
