@@ -1,43 +1,65 @@
-module Poker{
+
+/**
+ * 扑克玩家类 
+ */
+class PokerPlayer extends GComponent{
+
+    private playerState:PokerPlayerState
+    private points:number;//点数
+    private cardNum:number;//手牌数量
+    private pokerObjs:Array<CardButton>;//手牌控件
+
+    protected constructFromXML(xml: any): void {
+	    super.constructFromXML(xml);
+        
+        for (var index = 0; index < 5; index++) {
+            let cardButton = <CardButton>this.getChild("card" + index)
+            this.pokerObjs.push(cardButton)
+        }
+    }
+
+    public initPokers(pokers:Array<PokerCard>)
+    {
+        this.clear();
+
+        pokers.forEach(element => {
+            this.setCard(element);
+        });
+        this.calculatePoins();
+    }
+
     /**
-     * 扑克玩家类 
+     * 叫牌
+     * @param poker 
      */
-    export class PokerPlayer{
+    public bid(poker:PokerCard):void{
+        this.setCard(poker);
+    }
 
-        private playerState:PokerPlayerState
-        private pokers:Array<PokerCard>;//手牌
-        private points:number;//点数
+    /**
+     * 设置手牌
+     */
+    public setCard(poker:PokerCard,index?:number):void{
+        let setPos = (index == undefined ? this.cardNum : index );
+        this.pokerObjs[setPos].setPoker(poker);
+        this.cardNum ++;
+    }
 
-        constructor(pokers:Array<PokerCard>)
-        {
-            this.points = 0;
-            this.pokers = pokers;
-            this.updateCard();
-            this.calculatePoins();
-        }
+    /**
+     * 计算点数
+     */
+    private calculatePoins():void{
+        this.pokerObjs.forEach(element => {
+            this.points += element.poker.num;
+        });
+    }
 
-        /**
-         * 叫牌
-         * @param poker 
-         */
-        public bid(poker:PokerCard):void{
-            this.pokers.push(poker);
-        }
-
-        /**
-         * 更新手牌显示
-         */
-        private updateCard():void{
-
-        }
-
-        /**
-         * 计算点数
-         */
-        private calculatePoins():void{
-            this.pokers.forEach(element => {
-                this.points += element.num;
-            });
-        }
+    private clear():void{
+        this.points = 0;
+        this.cardNum = 0;
+        this.pokerObjs = new Array<CardButton>();
+        this.pokerObjs.forEach(element => {
+            element.clear();
+        });
     }
 }

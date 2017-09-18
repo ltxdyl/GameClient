@@ -1,4 +1,4 @@
-//弹幕管理类
+/**弹幕管理类*/
 var DanmakuMaster = (function () {
     function DanmakuMaster() {
         this.moveDir = DanmakuMoveDir.RightToLeft;

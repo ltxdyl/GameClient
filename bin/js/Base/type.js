@@ -39,14 +39,18 @@ var UIObjectFactory = fairygui.UIObjectFactory;
 var PokerCard = Poker.PokerCard;
 var PokerDeck = Poker.PokerDeck;
 //枚举值
-//弹幕移动方向
+/**
+ * 弹幕移动方向
+ */
 var DanmakuMoveDir;
 (function (DanmakuMoveDir) {
     DanmakuMoveDir[DanmakuMoveDir["LeftToRight"] = 0] = "LeftToRight";
     DanmakuMoveDir[DanmakuMoveDir["RightToLeft"] = 1] = "RightToLeft";
 })(DanmakuMoveDir || (DanmakuMoveDir = {}));
 ;
-//扑克牌花色
+/**
+ * 扑克牌花色
+ */
 var PokerColor;
 (function (PokerColor) {
     PokerColor[PokerColor["Heart"] = 0] = "Heart";
@@ -55,5 +59,14 @@ var PokerColor;
     PokerColor[PokerColor["Diamond"] = 3] = "Diamond";
     PokerColor[PokerColor["Joker"] = 4] = "Joker";
 })(PokerColor || (PokerColor = {}));
+;
+/**
+ * 玩家状态
+ */
+var PokerPlayerState;
+(function (PokerPlayerState) {
+    PokerPlayerState[PokerPlayerState["Normal"] = 0] = "Normal";
+    PokerPlayerState[PokerPlayerState["Lose"] = 1] = "Lose";
+})(PokerPlayerState || (PokerPlayerState = {}));
 ;
 //# sourceMappingURL=type.js.map

@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-//战斗组件
+/**战斗组件*/
 var ComBattle = (function (_super) {
     __extends(ComBattle, _super);
     function ComBattle() {

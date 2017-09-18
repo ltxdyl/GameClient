@@ -1,1 +1,1 @@
-{"version":3,"file":"ServerConfig.js","sourceRoot":"","sources":["../../../src/Configs/ServerConfig.ts"],"names":[],"mappings":"AAAA,OAAO;AACP,IAAI,YAAY,GAChB;IACI,MAAM,EAAC,WAAW;IAClB,MAAM,EAAE,IAAI;CACf,CAAA"}
+{"version":3,"file":"ServerConfig.js","sourceRoot":"","sources":["../../../src/Configs/ServerConfig.ts"],"names":[],"mappings":"AAAA,OAAO;AACP,IAAI,YAAY,GAChB;IACI,IAAI,EAAC,WAAW;IAChB,IAAI,EAAE,IAAI;CACb,CAAA"}

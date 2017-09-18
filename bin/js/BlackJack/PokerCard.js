@@ -1,6 +1,8 @@
-//一张扑克牌
 var Poker;
 (function (Poker) {
+    /**
+     * 一张扑克牌
+     */
     var PokerCard = (function () {
         function PokerCard(num, color) {
             this.num = num;

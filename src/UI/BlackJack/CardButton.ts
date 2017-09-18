@@ -1,19 +1,29 @@
 /**扑克牌按钮*/
-class CardButton extends GComponent
+class CardButton extends GButton
 {
-    private poker:PokerCard;
+    public poker:PokerCard;
 
-    public constructor(poker:PokerCard){
+    public constructor(){
         super();
-        this.poker = poker;
     }
 
 	protected constructFromXML(xml: any): void {
 		super.constructFromXML(xml);
-
-        this.icon = "ui://Icon/" + this.poker.color + "_" + this.poker.num;
         this.EvenBind();
 	}
+
+    /**
+     * 设置扑克
+     * @param poker 
+     */
+    public setPoker(poker:PokerCard):void{
+        this.poker = poker;
+        this.icon = "ui://Icon/" + PokerColor[this.poker.color] + "_" + this.poker.num;
+    }
+
+    public clear():void{
+        this.icon = "ui://Icon/Transparent"
+    }
 
     protected EvenBind():void{
 

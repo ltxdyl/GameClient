@@ -2,7 +2,8 @@
 var GameMain = (function () {
     function GameMain() {
         Laya.init(720, 1280, Laya.WebGL);
-        laya.utils.Stat.show(0, 0);
+        //显示游戏状态信息
+        //laya.utils.Stat.show(0, 0);
         //设置适配模式
         Laya.stage.scaleMode = "showall";
         Laya.stage.alignH = "center";
@@ -10,6 +11,8 @@ var GameMain = (function () {
         //设置横竖屏
         Laya.stage.screenMode = "vertical";
         Laya.loader.load([
+            { url: "res/ui/Icon@atlas0.png", type: Loader.IMAGE },
+            { url: "res/ui/Icon.fui", type: Loader.BUFFER },
             { url: "res/ui/Public@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/Public.fui", type: Loader.BUFFER },
             { url: "res/ui/Login@atlas0.png", type: Loader.IMAGE },
@@ -24,6 +27,7 @@ var GameMain = (function () {
             { url: "res/ui/HUD.fui", type: Loader.BUFFER },
             { url: "res/ui/Menu.fui", type: Loader.BUFFER },
             { url: "res/ui/Danmaku.fui", type: Loader.BUFFER },
+            { url: "res/ui/BlackJack@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/BlackJack.fui", type: Loader.BUFFER },
         ], Handler.create(this, this.onLoaded));
     }
@@ -39,6 +43,7 @@ var GameMain = (function () {
     //统一添加UI包
     GameMain.prototype.addPackage = function () {
         UIPackage.addPackage("res/ui/Public");
+        UIPackage.addPackage("res/ui/Icon");
         UIPackage.addPackage("res/ui/Task");
         UIPackage.addPackage("res/ui/Login");
         UIPackage.addPackage("res/ui/Battle");
@@ -57,6 +62,8 @@ var GameMain = (function () {
         UIObjectFactory.setPackageItemExtension("ui://City/ComCity", ComCity);
         UIObjectFactory.setPackageItemExtension("ui://Bag/ComBag", ComBag);
         UIObjectFactory.setPackageItemExtension("ui://Battle/ComBattle", ComBattle);
+        UIObjectFactory.setPackageItemExtension("ui://BlackJack/PokerPlayer", PokerPlayer);
+        UIObjectFactory.setPackageItemExtension("ui://BlackJack/CardButton", CardButton);
     };
     return GameMain;
 }());

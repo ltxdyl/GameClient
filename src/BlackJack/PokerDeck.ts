@@ -7,9 +7,9 @@ module Poker{
 
         private pokers:Array<PokerCard>;//牌堆
 
-        constructor(hasJoker:boolean)
+        constructor(hasJoker?:boolean)
         {
-            this.hasJoker = hasJoker;
+            hasJoker == undefined ? this.hasJoker = false : this.hasJoker = hasJoker;
             this.initPokers();
         }
 
@@ -47,6 +47,11 @@ module Poker{
         /**摸牌*/
         getCard():PokerCard{
             return this.pokers.pop(); 
+        }
+
+        /**牌剩余数量 */
+        getCount():number{
+            return this.pokers.length;
         }
 
         toString():string{

@@ -5,7 +5,7 @@ var Poker;
 (function (Poker) {
     var PokerDeck = (function () {
         function PokerDeck(hasJoker) {
-            this.hasJoker = hasJoker;
+            hasJoker == undefined ? this.hasJoker = false : this.hasJoker = hasJoker;
             this.initPokers();
         }
         /**初始化扑克牌*/
@@ -39,6 +39,10 @@ var Poker;
         /**摸牌*/
         PokerDeck.prototype.getCard = function () {
             return this.pokers.pop();
+        };
+        /**牌剩余数量 */
+        PokerDeck.prototype.getCount = function () {
+            return this.pokers.length;
         };
         PokerDeck.prototype.toString = function () {
             var str = "";
