@@ -9,9 +9,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var PokerPlayer = (function (_super) {
     __extends(PokerPlayer, _super);
     function PokerPlayer() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.temp = 12;
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     PokerPlayer.prototype.constructFromXML = function (xml) {
         _super.prototype.constructFromXML.call(this, xml);
@@ -22,8 +20,11 @@ var PokerPlayer = (function (_super) {
         }
     };
     PokerPlayer.prototype.initPokers = function (pokers) {
-        this.points = 0;
-        this.pokers = pokers;
+        var _this = this;
+        this.clear();
+        pokers.forEach(function (element) {
+            _this.setCard(element);
+        });
         this.calculatePoins();
     };
     /**
@@ -31,21 +32,30 @@ var PokerPlayer = (function (_super) {
      * @param poker
      */
     PokerPlayer.prototype.bid = function (poker) {
-        this.pokers.push(poker);
+        this.setCard(poker);
     };
     /**
      * 设置手牌
      */
     PokerPlayer.prototype.setCard = function (poker, index) {
-        this.pokerObjs[index].setPoker(poker);
+        var setPos = (index == undefined ? this.cardNum : index);
+        this.pokerObjs[setPos].setPoker(poker);
+        this.cardNum++;
     };
     /**
      * 计算点数
      */
     PokerPlayer.prototype.calculatePoins = function () {
         var _this = this;
-        this.pokers.forEach(function (element) {
-            _this.points += element.num;
+        this.pokerObjs.forEach(function (element) {
+            _this.points += element.poker.num;
+        });
+    };
+    PokerPlayer.prototype.clear = function () {
+        this.points = 0;
+        this.cardNum = 0;
+        this.pokerObjs.forEach(function (element) {
+            element.clear();
         });
     };
     return PokerPlayer;

@@ -33,7 +33,7 @@ var WndBlackJack = (function (_super) {
     WndBlackJack.prototype.OnShown = function () {
         this.gameTime = 0; //初始化游戏时间
         this.playerCountdown = BlackJackConfig.PlayerCountdown;
-        this.initGame(2); //初始化两个玩家
+        this.initGame(5); //初始化五个玩家
         this.initPokerDeck(); //初始化牌堆
     };
     /**每秒回调*/
@@ -74,6 +74,11 @@ var WndBlackJack = (function (_super) {
                 this.pokerDeck.push(deck.getCard());
             }
         }
+    };
+    /**
+     * 发牌
+     */
+    WndBlackJack.prototype.deal = function () {
     };
     return WndBlackJack;
 }(WindowBase));

@@ -12,6 +12,7 @@ class PokerPlayer extends GComponent{
     protected constructFromXML(xml: any): void {
 	    super.constructFromXML(xml);
         
+        this.pokerObjs = new Array<CardButton>();
         for (var index = 0; index < 5; index++) {
             let cardButton = <CardButton>this.getChild("card" + index)
             this.pokerObjs.push(cardButton)
@@ -57,7 +58,6 @@ class PokerPlayer extends GComponent{
     private clear():void{
         this.points = 0;
         this.cardNum = 0;
-        this.pokerObjs = new Array<CardButton>();
         this.pokerObjs.forEach(element => {
             element.clear();
         });

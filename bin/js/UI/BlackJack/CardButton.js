@@ -20,7 +20,9 @@ var CardButton = (function (_super) {
     CardButton.prototype.setPoker = function (poker) {
         this.poker = poker;
         this.icon = "ui://Icon/" + PokerColor[this.poker.color] + "_" + this.poker.num;
-        console.debug(PokerColor[this.poker.color]);
+    };
+    CardButton.prototype.clear = function () {
+        this.icon = "ui://Icon/Transparent";
     };
     CardButton.prototype.EvenBind = function () {
     };
