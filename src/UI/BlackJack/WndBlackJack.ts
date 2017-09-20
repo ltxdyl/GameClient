@@ -11,10 +11,20 @@ class WndBlackJack extends WindowBase{
         return this.wndBlackJack;
     }
 
-    private btnTest:GButton;
-    private btnRefresh:GButton;
+    private btnDouble:GButton;//双倍
+    private btnDeal:GButton;//分牌
+    private btnStop:GButton;//停牌
+    private btnGet:GButton;//要牌
+    private btn100:GButton;//下注100
+    private btn500:GButton;//下注500
+    private btn1000:GButton;//下注1000
+    private btn10000:GButton;//下注10000
+    private btnRepeat:GButton;//重复上一次下注
+    private btnBetting:GButton;//下注
+
     private txtCountdown:GTextField;//倒计时
     private player:Array<PokerPlayer>;//玩家
+    private ctrlBottomBtns:GController;//底部按钮控制器
 
     private pokerDeckNum:number;//几副牌
     private playerNum:number;//玩家数量
@@ -31,9 +41,18 @@ class WndBlackJack extends WindowBase{
     protected onInit():void {
         this.name = "WndBlackJack";
         this.contentPane = UIPackage.createObject("BlackJack",this.name).asCom;
-        this.btnTest = this.contentPane.getChild("btnTest").asButton;
-        this.btnRefresh = this.contentPane.getChild("btnRefresh").asButton;
+        this.btnDouble = this.contentPane.getChild("btnDouble").asButton;
+        this.btnDeal = this.contentPane.getChild("btnDeal").asButton;
+        this.btnStop = this.contentPane.getChild("btnStop").asButton;
+        this.btnGet = this.contentPane.getChild("btnGet").asButton;
+        this.btn100 = this.contentPane.getChild("btn100").asButton;
+        this.btn500 = this.contentPane.getChild("btn500").asButton;
+        this.btn1000 = this.contentPane.getChild("btn1000").asButton;
+        this.btn10000 = this.contentPane.getChild("btn10000").asButton;
+        this.btnRepeat = this.contentPane.getChild("btnRepeat").asButton;
+        this.btnBetting = this.contentPane.getChild("btnBetting").asButton;
         this.txtCountdown = this.contentPane.getChild("txtCountdown").asTextField;
+        this.ctrlBottomBtns = this.contentPane.getController("ctrlBottomBtns");
         this.currentPlayerIndex = 0;
 
         Laya.timer.loop(1000, this, this.SecondCallBack);
@@ -42,8 +61,7 @@ class WndBlackJack extends WindowBase{
     }
 
     protected EventBind():void{
-        this.btnTest.onClick(this,this.OnBtnTestClick)
-        this.btnRefresh.onClick(this,this.OnBtnRefreshClick);
+        this.btnDouble.onClick(this,this.btnDoubleOnclick)
     }
 
     protected OnShown(): void {
@@ -67,12 +85,11 @@ class WndBlackJack extends WindowBase{
         this.txtCountdown.text = String(this.playerCountdown);
     }
 
-    protected OnBtnTestClick():void{
+    /**
+     * 双倍
+     */
+    protected btnDoubleOnclick():void{
 
-    }
-
-    protected OnBtnRefreshClick():void{
-        this.player[0].setCard(new PokerCard(2,PokerColor.Diamond),0);
     }
 
     /**

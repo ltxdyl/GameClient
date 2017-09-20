@@ -18,14 +18,10 @@ var PokerPlayer = (function (_super) {
             var cardButton = this.getChild("card" + index);
             this.pokerObjs.push(cardButton);
         }
-    };
-    PokerPlayer.prototype.initPokers = function (pokers) {
-        var _this = this;
-        this.clear();
-        pokers.forEach(function (element) {
-            _this.setCard(element);
-        });
-        this.calculatePoins();
+        this.txtName = this.getChild("txtName").asTextField;
+        this.txtChips = this.getChild("txtChips").asTextField;
+        this.txtPoints = this.getChild("txtPoints").asTextField;
+        this.ctrlSitDir = this.getController("ctrlSitDIr");
     };
     /**
      * 叫牌

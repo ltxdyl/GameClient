@@ -6,27 +6,27 @@ class PokerPlayer extends GComponent{
 
     private playerState:PokerPlayerState
     private points:number;//点数
+    private chips:number;//筹码
     private cardNum:number;//手牌数量
+
     private pokerObjs:Array<CardButton>;//手牌控件
+    private txtName:GTextField;//用户名
+    private txtChips:GTextField;//筹码
+    private txtPoints:GTextField;//手牌总点数
+    private ctrlSitDir:GController;//座位方向控制器
 
     protected constructFromXML(xml: any): void {
 	    super.constructFromXML(xml);
-        
+
         this.pokerObjs = new Array<CardButton>();
         for (var index = 0; index < 5; index++) {
             let cardButton = <CardButton>this.getChild("card" + index)
             this.pokerObjs.push(cardButton)
         }
-    }
-
-    public initPokers(pokers:Array<PokerCard>)
-    {
-        this.clear();
-
-        pokers.forEach(element => {
-            this.setCard(element);
-        });
-        this.calculatePoins();
+        this.txtName = this.getChild("txtName").asTextField;
+        this.txtChips = this.getChild("txtChips").asTextField;
+        this.txtPoints = this.getChild("txtPoints").asTextField;
+        this.ctrlSitDir = this.getController("ctrlSitDIr");
     }
 
     /**

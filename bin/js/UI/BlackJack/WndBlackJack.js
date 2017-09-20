@@ -18,17 +18,25 @@ var WndBlackJack = (function (_super) {
     WndBlackJack.prototype.onInit = function () {
         this.name = "WndBlackJack";
         this.contentPane = UIPackage.createObject("BlackJack", this.name).asCom;
-        this.btnTest = this.contentPane.getChild("btnTest").asButton;
-        this.btnRefresh = this.contentPane.getChild("btnRefresh").asButton;
+        this.btnDouble = this.contentPane.getChild("btnDouble").asButton;
+        this.btnDeal = this.contentPane.getChild("btnDeal").asButton;
+        this.btnStop = this.contentPane.getChild("btnStop").asButton;
+        this.btnGet = this.contentPane.getChild("btnGet").asButton;
+        this.btn100 = this.contentPane.getChild("btn100").asButton;
+        this.btn500 = this.contentPane.getChild("btn500").asButton;
+        this.btn1000 = this.contentPane.getChild("btn1000").asButton;
+        this.btn10000 = this.contentPane.getChild("btn10000").asButton;
+        this.btnRepeat = this.contentPane.getChild("btnRepeat").asButton;
+        this.btnBetting = this.contentPane.getChild("btnBetting").asButton;
         this.txtCountdown = this.contentPane.getChild("txtCountdown").asTextField;
+        this.ctrlBottomBtns = this.contentPane.getController("ctrlBottomBtns");
         this.currentPlayerIndex = 0;
         Laya.timer.loop(1000, this, this.SecondCallBack);
         this.player = new Array();
         this.EventBind();
     };
     WndBlackJack.prototype.EventBind = function () {
-        this.btnTest.onClick(this, this.OnBtnTestClick);
-        this.btnRefresh.onClick(this, this.OnBtnRefreshClick);
+        this.btnDouble.onClick(this, this.btnDoubleOnclick);
     };
     WndBlackJack.prototype.OnShown = function () {
         this.gameTime = 0; //初始化游戏时间
@@ -47,10 +55,10 @@ var WndBlackJack = (function (_super) {
         }
         this.txtCountdown.text = String(this.playerCountdown);
     };
-    WndBlackJack.prototype.OnBtnTestClick = function () {
-    };
-    WndBlackJack.prototype.OnBtnRefreshClick = function () {
-        this.player[0].setCard(new PokerCard(2, PokerColor.Diamond), 0);
+    /**
+     * 双倍
+     */
+    WndBlackJack.prototype.btnDoubleOnclick = function () {
     };
     /**
      * 初始化游戏
