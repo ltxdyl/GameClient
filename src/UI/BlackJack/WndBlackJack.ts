@@ -1,46 +1,44 @@
 /**黑杰克界面*/
-class WndBlackJack extends WindowBase{
+class WndBlackJack extends WindowBase {
 
-    private static wndBlackJack:WndBlackJack = null;
-    public static GetInst():WndBlackJack
-    {
-        if(this.wndBlackJack == null)
-        {
+    private static wndBlackJack: WndBlackJack = null;
+    public static GetInst(): WndBlackJack {
+        if (this.wndBlackJack == null) {
             this.wndBlackJack = new WndBlackJack();
         }
         return this.wndBlackJack;
     }
 
-    private btnDouble:GButton;//双倍
-    private btnDeal:GButton;//分牌
-    private btnStop:GButton;//停牌
-    private btnGet:GButton;//要牌
-    private btn100:GButton;//下注100
-    private btn500:GButton;//下注500
-    private btn1000:GButton;//下注1000
-    private btn10000:GButton;//下注10000
-    private btnRepeat:GButton;//重复上一次下注
-    private btnBetting:GButton;//下注
+    private btnDouble: GButton;//双倍
+    private btnDeal: GButton;//分牌
+    private btnStop: GButton;//停牌
+    private btnGet: GButton;//要牌
+    private btn100: GButton;//下注100
+    private btn500: GButton;//下注500
+    private btn1000: GButton;//下注1000
+    private btn10000: GButton;//下注10000
+    private btnRepeat: GButton;//重复上一次下注
+    private btnBetting: GButton;//下注
 
-    private txtCountdown:GTextField;//倒计时
-    private player:Array<PokerPlayer>;//玩家
-    private ctrlBottomBtns:GController;//底部按钮控制器
+    private txtCountdown: GTextField;//倒计时
+    private player: Array<PokerPlayer>;//玩家
+    private ctrlBottomBtns: GController;//底部按钮控制器
 
-    private pokerDeckNum:number;//几副牌
-    private playerNum:number;//玩家数量
-    private currentPlayerIndex:number;//当前玩家索引
-    private pokerDeck:Array<PokerCard>;//牌堆
+    private pokerDeckNum: number;//几副牌
+    private playerNum: number;//玩家数量
+    private currentPlayerIndex: number;//当前玩家索引
+    private pokerDeck: Array<PokerCard>;//牌堆
 
-    private gameTime:number;//游戏时间
-    private playerCountdown:number;//玩家出牌倒计时
+    private gameTime: number;//游戏时间
+    private playerCountdown: number;//玩家出牌倒计时
 
     public constructor() {
         super();
     }
-    
-    protected onInit():void {
+
+    protected onInit(): void {
         this.name = "WndBlackJack";
-        this.contentPane = UIPackage.createObject("BlackJack",this.name).asCom;
+        this.contentPane = UIPackage.createObject("BlackJack", this.name).asCom;
         this.btnDouble = this.contentPane.getChild("btnDouble").asButton;
         this.btnDeal = this.contentPane.getChild("btnDeal").asButton;
         this.btnStop = this.contentPane.getChild("btnStop").asButton;
@@ -60,8 +58,8 @@ class WndBlackJack extends WindowBase{
         this.EventBind();
     }
 
-    protected EventBind():void{
-        this.btnDouble.onClick(this,this.btnDoubleOnclick)
+    protected EventBind(): void {
+        this.btnDouble.onClick(this, this.btnDoubleOnclick)
     }
 
     protected OnShown(): void {
@@ -72,14 +70,12 @@ class WndBlackJack extends WindowBase{
     }
 
     /**每秒回调*/
-    protected SecondCallBack():void{
-        this.gameTime ++;
-        if(this.playerCountdown > 0)
-        {
-            this.playerCountdown --;
+    protected SecondCallBack(): void {
+        this.gameTime++;
+        if (this.playerCountdown > 0) {
+            this.playerCountdown--;
         }
-        else
-        {
+        else {
             this.playerCountdown = BlackJackConfig.PlayerCountdown;
         }
         this.txtCountdown.text = String(this.playerCountdown);
@@ -88,14 +84,14 @@ class WndBlackJack extends WindowBase{
     /**
      * 双倍
      */
-    protected btnDoubleOnclick():void{
+    protected btnDoubleOnclick(): void {
 
     }
 
     /**
      * 初始化游戏
      */
-    public initGame(playerNum:number):void{
+    public initGame(playerNum: number): void {
         this.playerNum = playerNum;
         for (var index = 0; index < this.playerNum; index++) {
             this.player[index] = <PokerPlayer>this.contentPane.getChild("player" + index);
@@ -105,7 +101,7 @@ class WndBlackJack extends WindowBase{
     /**
      * 初始化牌堆
      */
-    public initPokerDeck():void{
+    public initPokerDeck(): void {
         this.pokerDeck = new Array<PokerCard>();
         this.pokerDeckNum = Math.ceil(Math.random() * 7) + 1 // 随机生成1-8副牌
         console.debug("当前拥有" + this.pokerDeckNum + "副牌")
@@ -120,7 +116,7 @@ class WndBlackJack extends WindowBase{
     /**
      * 发牌
      */
-    public deal():void{
+    public deal(): void {
 
     }
 

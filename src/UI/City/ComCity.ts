@@ -1,8 +1,8 @@
 //主城面板组件
-class ComCity extends GComponent{
+class ComCity extends GComponent {
 
-    public tShowGirl:Transition;
-	public tShowFuncButtons:Transition;
+	public tShowGirl: Transition;
+	public tShowFuncButtons: Transition;
 
 	public constructor() {
 		super();
@@ -12,14 +12,14 @@ class ComCity extends GComponent{
 		super.constructFromXML(xml);
 		this.tShowGirl = this.getTransition("tShowGirl")
 		this.tShowFuncButtons = this.getTransition("tShowFuncButtons")
-        this.EvenBind();
+		this.EvenBind();
 	}
 
-    protected EvenBind():void{
+	protected EvenBind(): void {
 
-    }
+	}
 
-	public OnShow():void{
+	public OnShow(): void {
 		this.tShowGirl.play();
 		this.tShowFuncButtons.play();
 	}

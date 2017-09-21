@@ -2,21 +2,21 @@
 /**
  * 扑克玩家类 
  */
-class PokerPlayer extends GComponent{
+class PokerPlayer extends GComponent {
 
-    private playerState:PokerPlayerState
-    private points:number;//点数
-    private chips:number;//筹码
-    private cardNum:number;//手牌数量
+    private playerState: PokerPlayerState
+    private points: number;//点数
+    private chips: number;//筹码
+    private cardNum: number;//手牌数量
 
-    private pokerObjs:Array<CardButton>;//手牌控件
-    private txtName:GTextField;//用户名
-    private txtChips:GTextField;//筹码
-    private txtPoints:GTextField;//手牌总点数
-    private ctrlSitDir:GController;//座位方向控制器
+    private pokerObjs: Array<CardButton>;//手牌控件
+    private txtName: GTextField;//用户名
+    private txtChips: GTextField;//筹码
+    private txtPoints: GTextField;//手牌总点数
+    private ctrlSitDir: GController;//座位方向控制器
 
     protected constructFromXML(xml: any): void {
-	    super.constructFromXML(xml);
+        super.constructFromXML(xml);
 
         this.pokerObjs = new Array<CardButton>();
         for (var index = 0; index < 5; index++) {
@@ -33,29 +33,29 @@ class PokerPlayer extends GComponent{
      * 叫牌
      * @param poker 
      */
-    public bid(poker:PokerCard):void{
+    public bid(poker: PokerCard): void {
         this.setCard(poker);
     }
 
     /**
      * 设置手牌
      */
-    public setCard(poker:PokerCard,index?:number):void{
-        let setPos = (index == undefined ? this.cardNum : index );
+    public setCard(poker: PokerCard, index?: number): void {
+        let setPos = (index == undefined ? this.cardNum : index);
         this.pokerObjs[setPos].setPoker(poker);
-        this.cardNum ++;
+        this.cardNum++;
     }
 
     /**
      * 计算点数
      */
-    private calculatePoins():void{
+    private calculatePoins(): void {
         this.pokerObjs.forEach(element => {
             this.points += element.poker.num;
         });
     }
 
-    private clear():void{
+    private clear(): void {
         this.points = 0;
         this.cardNum = 0;
         this.pokerObjs.forEach(element => {
