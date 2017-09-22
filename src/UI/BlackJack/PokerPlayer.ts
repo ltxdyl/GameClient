@@ -13,7 +13,7 @@ class PokerPlayer extends GComponent {
     private txtName: GTextField;//用户名
     private txtChips: GTextField;//筹码
     private txtPoints: GTextField;//手牌总点数
-    private ctrlSitDir: GController;//座位方向控制器
+    public ctrlSitDir: GController;//座位方向控制器
 
     protected constructFromXML(xml: any): void {
         super.constructFromXML(xml);
@@ -26,7 +26,7 @@ class PokerPlayer extends GComponent {
         this.txtName = this.getChild("txtName").asTextField;
         this.txtChips = this.getChild("txtChips").asTextField;
         this.txtPoints = this.getChild("txtPoints").asTextField;
-        this.ctrlSitDir = this.getController("ctrlSitDIr");
+        this.ctrlSitDir = this.getController("ctrlSitDir");
     }
 
     /**

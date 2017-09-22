@@ -31,6 +31,7 @@ class WndBlackJack extends WindowBase {
 
     private gameTime: number;//游戏时间
     private playerCountdown: number;//玩家出牌倒计时
+    private bettingValue: number;//玩家下注筹码
 
     public constructor() {
         super();
@@ -59,11 +60,21 @@ class WndBlackJack extends WindowBase {
     }
 
     protected EventBind(): void {
-        this.btnDouble.onClick(this, this.btnDoubleOnclick)
+        this.btnDouble.onClick(this, this.btnDoubleOnClick)
+        this.btnDeal.onClick(this, this.btnDealOnClick)
+        this.btnStop.onClick(this, this.btnStopOnClick)
+        this.btnGet.onClick(this, this.btnGetOnClick)
+        this.btn100.onClick(this, this.btn100OnClick)
+        this.btn500.onClick(this, this.btn500OnClick)
+        this.btn1000.onClick(this, this.btn1000OnClick)
+        this.btn10000.onClick(this, this.btn10000OnClick)
+        this.btnRepeat.onClick(this, this.btnRepeatOnClick)
+        this.btnBetting.onClick(this, this.btnBettingOnClick)
     }
 
     protected OnShown(): void {
         this.gameTime = 0;//初始化游戏时间
+        this.bettingValue = 0;
         this.playerCountdown = BlackJackConfig.PlayerCountdown;
         this.initGame(5);//初始化五个玩家
         this.initPokerDeck();//初始化牌堆
@@ -84,17 +95,84 @@ class WndBlackJack extends WindowBase {
     /**
      * 双倍
      */
-    protected btnDoubleOnclick(): void {
+    protected btnDoubleOnClick(): void {
 
+    }
+
+    /**
+     * 分牌
+     */
+    protected btnDealOnClick(): void {
+
+    }
+
+    /**
+     * 停牌
+     */
+    protected btnStopOnClick(): void {
+
+    }
+
+    /**
+     * 要牌
+     */
+    protected btnGetOnClick(): void {
+
+    }
+
+    /**
+     * 下注100
+     */
+    protected btn100OnClick(): void {
+        this.bettingValue = 100;
+    }
+
+    /**
+     * 下注500
+     */
+    protected btn500OnClick(): void {
+        this.bettingValue = 500;
+    }
+
+    /**
+     * 下注1000
+     */
+    protected btn1000OnClick(): void {
+        this.bettingValue = 1000;
+    }
+
+    /**
+     * 下注10000
+     */
+    protected btn10000OnClick(): void {
+        this.bettingValue = 10000;
+    }
+
+    /**
+     * 重复上一轮投注
+     */
+    protected btnRepeatOnClick(): void {
+
+    }
+
+    /**
+     * 下注
+     */
+    protected btnBettingOnClick(): void {
+        this.ctrlBottomBtns.selectedPage = "打牌";
     }
 
     /**
      * 初始化游戏
      */
     public initGame(playerNum: number): void {
+        this.ctrlBottomBtns.selectedPage = "下注";
         this.playerNum = playerNum;
         for (var index = 0; index < this.playerNum; index++) {
             this.player[index] = <PokerPlayer>this.contentPane.getChild("player" + index);
+            if (index == 1 || index == 2) {
+                this.player[index].ctrlSitDir.selectedPage = "右";
+            }
         }
     }
 
@@ -119,6 +197,4 @@ class WndBlackJack extends WindowBase {
     public deal(): void {
 
     }
-
-
 }

@@ -21,7 +21,7 @@ var PokerPlayer = (function (_super) {
         this.txtName = this.getChild("txtName").asTextField;
         this.txtChips = this.getChild("txtChips").asTextField;
         this.txtPoints = this.getChild("txtPoints").asTextField;
-        this.ctrlSitDir = this.getController("ctrlSitDIr");
+        this.ctrlSitDir = this.getController("ctrlSitDir");
     };
     /**
      * 叫牌

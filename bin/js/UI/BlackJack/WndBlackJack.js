@@ -36,10 +36,20 @@ var WndBlackJack = (function (_super) {
         this.EventBind();
     };
     WndBlackJack.prototype.EventBind = function () {
-        this.btnDouble.onClick(this, this.btnDoubleOnclick);
+        this.btnDouble.onClick(this, this.btnDoubleOnClick);
+        this.btnDeal.onClick(this, this.btnDealOnClick);
+        this.btnStop.onClick(this, this.btnStopOnClick);
+        this.btnGet.onClick(this, this.btnGetOnClick);
+        this.btn100.onClick(this, this.btn100OnClick);
+        this.btn500.onClick(this, this.btn500OnClick);
+        this.btn1000.onClick(this, this.btn1000OnClick);
+        this.btn10000.onClick(this, this.btn10000OnClick);
+        this.btnRepeat.onClick(this, this.btnRepeatOnClick);
+        this.btnBetting.onClick(this, this.btnBettingOnClick);
     };
     WndBlackJack.prototype.OnShown = function () {
         this.gameTime = 0; //初始化游戏时间
+        this.bettingValue = 0;
         this.playerCountdown = BlackJackConfig.PlayerCountdown;
         this.initGame(5); //初始化五个玩家
         this.initPokerDeck(); //初始化牌堆
@@ -58,15 +68,69 @@ var WndBlackJack = (function (_super) {
     /**
      * 双倍
      */
-    WndBlackJack.prototype.btnDoubleOnclick = function () {
+    WndBlackJack.prototype.btnDoubleOnClick = function () {
+    };
+    /**
+     * 分牌
+     */
+    WndBlackJack.prototype.btnDealOnClick = function () {
+    };
+    /**
+     * 停牌
+     */
+    WndBlackJack.prototype.btnStopOnClick = function () {
+    };
+    /**
+     * 要牌
+     */
+    WndBlackJack.prototype.btnGetOnClick = function () {
+    };
+    /**
+     * 下注100
+     */
+    WndBlackJack.prototype.btn100OnClick = function () {
+        this.bettingValue = 100;
+    };
+    /**
+     * 下注500
+     */
+    WndBlackJack.prototype.btn500OnClick = function () {
+        this.bettingValue = 500;
+    };
+    /**
+     * 下注1000
+     */
+    WndBlackJack.prototype.btn1000OnClick = function () {
+        this.bettingValue = 1000;
+    };
+    /**
+     * 下注10000
+     */
+    WndBlackJack.prototype.btn10000OnClick = function () {
+        this.bettingValue = 10000;
+    };
+    /**
+     * 重复上一轮投注
+     */
+    WndBlackJack.prototype.btnRepeatOnClick = function () {
+    };
+    /**
+     * 下注
+     */
+    WndBlackJack.prototype.btnBettingOnClick = function () {
+        this.ctrlBottomBtns.selectedPage = "打牌";
     };
     /**
      * 初始化游戏
      */
     WndBlackJack.prototype.initGame = function (playerNum) {
+        this.ctrlBottomBtns.selectedPage = "下注";
         this.playerNum = playerNum;
         for (var index = 0; index < this.playerNum; index++) {
             this.player[index] = this.contentPane.getChild("player" + index);
+            if (index == 1 || index == 2) {
+                this.player[index].ctrlSitDir.selectedPage = "右";
+            }
         }
     };
     /**
