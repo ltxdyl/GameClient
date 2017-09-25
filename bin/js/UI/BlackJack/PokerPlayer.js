@@ -22,6 +22,8 @@ var PokerPlayer = (function (_super) {
         this.txtChips = this.getChild("txtChips").asTextField;
         this.txtPoints = this.getChild("txtPoints").asTextField;
         this.ctrlSitDir = this.getController("ctrlSitDir");
+        this.ctrlState = this.getController("ctrlState");
+        this.clear();
     };
     /**
      * 叫牌
@@ -48,6 +50,10 @@ var PokerPlayer = (function (_super) {
         });
     };
     PokerPlayer.prototype.clear = function () {
+        this.ctrlState.selectedPage = "无人";
+        this.txtName.text = "";
+        this.txtChips.text = "";
+        this.txtPoints.text = "";
         this.points = 0;
         this.cardNum = 0;
         this.pokerObjs.forEach(function (element) {

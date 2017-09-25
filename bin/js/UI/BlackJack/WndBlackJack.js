@@ -50,20 +50,22 @@ var WndBlackJack = (function (_super) {
     WndBlackJack.prototype.OnShown = function () {
         this.gameTime = 0; //初始化游戏时间
         this.bettingValue = 0;
-        this.playerCountdown = BlackJackConfig.PlayerCountdown;
+        this.playerCountdown = -1;
+        this.txtCountdown.visible = false;
         this.initGame(5); //初始化五个玩家
         this.initPokerDeck(); //初始化牌堆
+        this.enterPlayer(0, "lin");
     };
     /**每秒回调*/
     WndBlackJack.prototype.SecondCallBack = function () {
         this.gameTime++;
         if (this.playerCountdown > 0) {
             this.playerCountdown--;
+            this.txtCountdown.text = String(this.playerCountdown);
         }
         else {
-            this.playerCountdown = BlackJackConfig.PlayerCountdown;
+            this.txtCountdown.visible = false;
         }
-        this.txtCountdown.text = String(this.playerCountdown);
     };
     /**
      * 双倍
@@ -151,6 +153,21 @@ var WndBlackJack = (function (_super) {
      * 发牌
      */
     WndBlackJack.prototype.deal = function () {
+        this.beginCountdown();
+        this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.playerNum;
+    };
+    /**
+     * 开始倒计时
+     */
+    WndBlackJack.prototype.beginCountdown = function () {
+        this.txtCountdown.visible = true;
+        this.playerCountdown = BlackJackConfig.PlayerCountdown;
+    };
+    //新进入一个玩家
+    WndBlackJack.prototype.enterPlayer = function (index, name) {
+        this.playerNum++;
+        this.player[index].ctrlState.selectedPage = "有人";
+        this.player[index].txtName.text = name;
     };
     return WndBlackJack;
 }(WindowBase));

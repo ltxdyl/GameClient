@@ -75,9 +75,12 @@ class WndBlackJack extends WindowBase {
     protected OnShown(): void {
         this.gameTime = 0;//初始化游戏时间
         this.bettingValue = 0;
-        this.playerCountdown = BlackJackConfig.PlayerCountdown;
+        this.playerCountdown = -1;
+        this.txtCountdown.visible = false;
         this.initGame(5);//初始化五个玩家
         this.initPokerDeck();//初始化牌堆
+
+        this.enterPlayer(0, "lin");
     }
 
     /**每秒回调*/
@@ -85,11 +88,11 @@ class WndBlackJack extends WindowBase {
         this.gameTime++;
         if (this.playerCountdown > 0) {
             this.playerCountdown--;
+            this.txtCountdown.text = String(this.playerCountdown);
         }
         else {
-            this.playerCountdown = BlackJackConfig.PlayerCountdown;
+            this.txtCountdown.visible = false;
         }
-        this.txtCountdown.text = String(this.playerCountdown);
     }
 
     /**
@@ -195,6 +198,22 @@ class WndBlackJack extends WindowBase {
      * 发牌
      */
     public deal(): void {
+        this.beginCountdown();
+        this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.playerNum;
+    }
 
+    /**
+     * 开始倒计时
+     */
+    public beginCountdown(): void {
+        this.txtCountdown.visible = true;
+        this.playerCountdown = BlackJackConfig.PlayerCountdown;
+    }
+
+    //新进入一个玩家
+    public enterPlayer(index: number, name: string): void {
+        this.playerNum++;
+        this.player[index].ctrlState.selectedPage = "有人";
+        this.player[index].txtName.text = name;
     }
 }
