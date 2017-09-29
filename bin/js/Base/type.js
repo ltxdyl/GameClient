@@ -7,6 +7,9 @@ var Ease = laya.utils.Ease;
 var LayaEvent = Laya.Event;
 var Socket = Laya.Socket;
 var Byte = Laya.Byte;
+//StarFramework
+var App = StarLib.App;
+var Guard = StarLib.Guard;
 //fairygui
 var GController = fairygui.Controller;
 var GObject = fairygui.GObject;

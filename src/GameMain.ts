@@ -1,7 +1,6 @@
 // 程序入口
 class GameMain {
-    constructor()
-    {
+    constructor() {
         Laya.init(720, 1280, Laya.WebGL);
 
         //显示游戏状态信息
@@ -14,28 +13,28 @@ class GameMain {
         //设置横竖屏
         Laya.stage.screenMode = "vertical";
         Laya.loader.load([
-            { url: "res/ui/Icon@atlas0.png", type: Loader.IMAGE},
+            { url: "res/ui/Icon@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/Icon.fui", type: Loader.BUFFER },
-            { url: "res/ui/Public@atlas0.png", type: Loader.IMAGE},
+            { url: "res/ui/Public@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/Public.fui", type: Loader.BUFFER },
-            { url: "res/ui/Login@atlas0.png", type: Loader.IMAGE},
+            { url: "res/ui/Login@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/Login.fui", type: Loader.BUFFER },
             { url: "res/ui/Battle.fui", type: Loader.BUFFER },
-            { url: "res/ui/Bag@atlas0.png", type: Loader.IMAGE},
+            { url: "res/ui/Bag@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/Bag.fui", type: Loader.BUFFER },
-            { url: "res/ui/City@atlas0.png", type: Loader.IMAGE},
+            { url: "res/ui/City@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/City.fui", type: Loader.BUFFER },
             { url: "res/ui/Task.fui", type: Loader.BUFFER },
-            { url: "res/ui/HUD@atlas0.png", type: Loader.IMAGE},
+            { url: "res/ui/HUD@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/HUD.fui", type: Loader.BUFFER },
             { url: "res/ui/Menu.fui", type: Loader.BUFFER },
             { url: "res/ui/Danmaku.fui", type: Loader.BUFFER },
-            { url: "res/ui/BlackJack@atlas0.png", type: Loader.IMAGE},
+            { url: "res/ui/BlackJack@atlas0.png", type: Loader.IMAGE },
             { url: "res/ui/BlackJack.fui", type: Loader.BUFFER },
         ], Handler.create(this, this.onLoaded));
     }
 
-    onLoaded():void {
+    onLoaded(): void {
         //GoWebSocket.GetInst();//初始化网络连接
         Laya.stage.addChild(GRoot.inst.displayObject);
         this.addPackage();
@@ -45,7 +44,7 @@ class GameMain {
     };
 
     //统一添加UI包
-    addPackage():void{
+    addPackage(): void {
         UIPackage.addPackage("res/ui/Public");
         UIPackage.addPackage("res/ui/Icon");
         UIPackage.addPackage("res/ui/Task");
@@ -60,14 +59,14 @@ class GameMain {
     };
 
     //统一绑定扩展组件
-    bindAll():void{
-        UIObjectFactory.setPackageItemExtension("ui://Danmaku/DanmakuItem",DanmakuItem);
-        UIObjectFactory.setPackageItemExtension("ui://Public/ModalWindowBg",ModalWindowBg);
-        UIObjectFactory.setPackageItemExtension("ui://City/ComCity",ComCity);
-        UIObjectFactory.setPackageItemExtension("ui://Bag/ComBag",ComBag);
-        UIObjectFactory.setPackageItemExtension("ui://Battle/ComBattle",ComBattle);
-        UIObjectFactory.setPackageItemExtension("ui://BlackJack/PokerPlayer",PokerPlayer);
-        UIObjectFactory.setPackageItemExtension("ui://BlackJack/CardButton",CardButton);
+    bindAll(): void {
+        UIObjectFactory.setPackageItemExtension("ui://Danmaku/DanmakuItem", DanmakuItem);
+        UIObjectFactory.setPackageItemExtension("ui://Public/ModalWindowBg", ModalWindowBg);
+        UIObjectFactory.setPackageItemExtension("ui://City/ComCity", ComCity);
+        UIObjectFactory.setPackageItemExtension("ui://Bag/ComBag", ComBag);
+        UIObjectFactory.setPackageItemExtension("ui://Battle/ComBattle", ComBattle);
+        UIObjectFactory.setPackageItemExtension("ui://BlackJack/PokerPlayer", PokerPlayer);
+        UIObjectFactory.setPackageItemExtension("ui://BlackJack/CardButton", CardButton);
     }
 }
 

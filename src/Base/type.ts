@@ -9,6 +9,10 @@ import LayaEvent = Laya.Event;
 import Socket = Laya.Socket;
 import Byte = Laya.Byte;
 
+//StarFramework
+import App = StarLib.App;
+import Guard = StarLib.Guard;
+
 //fairygui
 import GController = fairygui.Controller
 import GObject = fairygui.GObject
@@ -48,14 +52,14 @@ import PokerDeck = Poker.PokerDeck
 /**
  * 弹幕移动方向
  */
-enum DanmakuMoveDir{LeftToRight,RightToLeft};
+enum DanmakuMoveDir { LeftToRight, RightToLeft };
 
 /**
  * 扑克牌花色
  */
-enum PokerColor{Heart,Spade,Club,Diamond,Joker};
+enum PokerColor { Heart, Spade, Club, Diamond, Joker };
 
 /**
  * 玩家状态
  */
-enum PokerPlayerState{Normal,Lose};
+enum PokerPlayerState { Normal, Lose };

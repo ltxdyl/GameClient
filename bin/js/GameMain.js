@@ -38,6 +38,7 @@ var GameMain = (function () {
         this.bindAll();
         //WndLogin.GetInst().show();
         WndBlackJack.GetInst().show();
+        var a = App.Handler;
     };
     ;
     //统一添加UI包
